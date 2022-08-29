@@ -47,16 +47,16 @@ CREATE TABLE funcionario (
 );
 --Nutricionista
 CREATE TABLE nutricionista (
-    crn VARCHAR2 (5) NOT NULL,
-    cpf_n VARCHAR2 (5) NOT NULL,
+    crn VARCHAR2 (5),
+    cpf_n VARCHAR2 (5),
     
-    CONSTRAINT nutricionista_pkey PRIMARY KEY (crn)
+    CONSTRAINT nutricionista_pkey PRIMARY KEY (crn),
     CONSTRAINT nutricionista_fkey FOREIGN KEY (cpf_n) REFERENCES funcionario (cpf_f)
 
 )
 --Vendedor
 CREATE TABLE vendedor (
-    cpf_v VARCHAR2 (5) NOT NULL,
+    cpf_v VARCHAR2 (5),
     cod_vendedor VARCHAR2 (3) NOT NULL,
     
     CONSTRAINT vendedor_pkey PRIMARY KEY (cpf_v),
@@ -66,22 +66,20 @@ CREATE TABLE vendedor (
 --Atendente
 CREATE TABLE atendente (
     Cod_Atendente VARCHAR2 (3) NOT NULL,
-    cpf_a CHAR CHAR(5) NOT NULL,
+    cpf_a VARCHAR2 (5),
     
-    CONSTRAINT atendente_pkey PRIMARY KEY (cpf_a)
-    CONSTRAINT atendente_fkey FOREIGN KEY (cpf
-a) REFERENCES funcionario(cpf_f)
+    CONSTRAINT atendente_pkey PRIMARY KEY (cpf_a),
+    CONSTRAINT atendente_fkey FOREIGN KEY (cpf_a) REFERENCES funcionario(cpf_f)
 
 );
 --Fabricante
 CREATE TABLE fabricante (
-  cnpj VARCHAR2(5) NOT NULL,
+  cnpj VARCHAR2(255)
   nome_fabri VARCHAR2 (255) NOT NULL,
 
   CONSTRAINT fabricante_pkey PRIMARY KEY (cnpj)
-  
-
 );
+
 --Produto
 CREATE TABLE produto(
     cnpj_f VARCHAR2(5),
@@ -92,41 +90,66 @@ CREATE TABLE produto(
     data_fabricacao DATE NOT NULL,
     data_vencimento DATE NOT NULL,
 
-    CONSTRAINT produto_fkey FOREIGN KEY (cnpj_f) REFERENCES fabricante(cnpj)
+    CONSTRAINT produto_fkey FOREIGN KEY (cnpj_f) REFERENCES fabricante(cnpj),
     CONSTRAINT produto_pkey PRIMARY KEY (cnpj_f, nome_p)
 );
 
 --Consulta
 CREATE TABLE consulta (
-    cpf_c VARCHAR2 (5) NOT NULL,
-    crn VARCHAR2 (4) NOT NULL,
+    cpf_c VARCHAR2 (5),
+    crn VARCHAR2 (4),
     data_hora_consulta TIMESTAMP NOT NULL,
 
     CONSTRAINT consulta_pkey PRIMARY KEY (cpf_c, crn),
-    CONSTRAINT consulta_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c)
-
-);
---Marcar_Consulta
-CREATE TABLE (
-    cpf_c VARCHAR2 (5) NOT NULL,
-    crn VARCHAR2 (4) NOT NULL,
-
+    CONSTRAINT consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c)
+    CONSTRAINT consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn)
 );
 
 CREATE TABLE marcar_consulta (
-    cpf_c VARCHAR2(5) NOT NULL,
-    crn VARCHAR2(5) NOT NULL,
-    Cod_Atendente VARCHAR2(5) NOT NULL,
+    cpf_c VARCHAR2(5),
+    crn VARCHAR2(5),
+    Cod_Atendente VARCHAR2(5),
     data_hora_marcada TIMESTAMP NOT NULL,
 
+    CONSTRAINT marcar_consulta_pkey PRIMARY KEY (cpf_c, crn, Cod_Atendente),
     CONSTRAINT marcar_consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
     CONSTRAINT marcar_consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn),
     CONSTRAINT marcar_consulta_cod_fkey FOREIGN KEY (Cod_Atendente) REFERENCES atendente (Cod_Atendente)
-    
-    
 );
+
 --Prescreve
+CREATE TABLE prescreve (
+    cpf_c VARCHAR2(5),
+    crn VARCHAR2(5),
+    cnpj_f VARCHAR2(5),
+    nome_p VARCHAR2(255),
+    
+    CONSTRAINT prescreve_pkey PRIMARY KEY (cpf_c, crn, cnpj_f, nome_p)
+    CONSTRAINT prescreve_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c)
+    CONSTRAINT prescreve_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn)
+    CONSTRAINT prescreve_fkey FOREIGN KEY (cnpj_f, nome_p) REFERENCES produto (cnpj_f, nome_p)
+);
 
 --Compra
+CREATE TABLE compra (
+  cpf_c VARCHAR2(5),
+  cnpj_f VARCHAR2(5),
+  nome_p VARCHAR2(255),
+  cod_vendedor VARCHAR2(3),
+  data_hora_compra TIMESTAMP NOT NULL,
+  
+  CONSTRAINT compra_pkey PRIMARY KEY (cpf_c, cnpj_f, nome_p),
+  CONSTRAINT compra_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
+  CONSTRAINT compra_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj,nome_p),
+  CONSTRAINT compra_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
+  
+);
 
 --Telefone
+CREATE TABLE telefone (
+    cpf_c VARCHAR2(5),
+    telefone_c NUMBER NOT NULL,
+
+    CONSTRAINT telefone_pkey PRIMARY KEY (cpf_c, telefone_c)
+    CONSTRAINT telefone_fkey FOREIGN KEY (cpf_c)  REFERENCES cliente (cpf_c) 
+);
