@@ -20,28 +20,26 @@ CREATE TABLE pessoa (
 CREATE TABLE cliente (
     cpf_c VARCHAR2 (5),
     peso NUMBER NOT NULL,
-    altura TINYINT (255),
-    percentual_gordura NUMBER,
-    imc NUMBER NOT NULL,
+    altura NUMBER NOT NULL,
+    percentual_gordura NUMBER NOT NULL,
     biotipo VARCHAR2(4),
     plano_saude VARCHAR2(255) NOT NULL,
 
     CONSTRAINT cliente_pkey PRIMARY KEY (cpf_c),
     CONSTRAINT cliente_fkey FOREIGN KEY (cpf_c) REFERENCES pessoa (cpf),
-    CONSTRAINT cliente_checkPercent CHECK (percentual_gordura >= 0 AND percentual_gordura < 100),
     CONSTRAINT cliente_checkBiotipo CHECK (biotipo in ('ECTO', 'ENDO', 'MESO'))
     
 );
 
 --Funcionario 
 CREATE TABLE funcionario (
-    cpf_fssss,
+    cpf_f VARCHAR2 (5),
     data_admissao DATE NOT NULL,
     cargo VARCHAR2 (255) NOT NULL,
     salario NUMBER (*,2),
     cpf_ger VARCHAR2 (5),
     
-    CONSTRAINT funcionario_check (salario >= 1212.00),
+    CONSTRAINT funcionario_check CHECK (salario >= 1212.00),
     CONSTRAINT funcionario_pkey PRIMARY KEY (cpf_f),
     CONSTRAINT funcionario_fkey FOREIGN KEY (cpf_ger) REFERENCES funcionario (cpf_f)
 );
@@ -53,13 +51,13 @@ CREATE TABLE nutricionista (
     CONSTRAINT nutricionista_pkey PRIMARY KEY (crn),
     CONSTRAINT nutricionista_fkey FOREIGN KEY (cpf_n) REFERENCES funcionario (cpf_f)
 
-)
+);
 --Vendedor
 CREATE TABLE vendedor (
-    cpf_v VARCHAR2 (5),
     cod_vendedor VARCHAR2 (3) NOT NULL,
+    cpf_v VARCHAR2 (5),
     
-    CONSTRAINT vendedor_pkey PRIMARY KEY (cpf_v),
+    CONSTRAINT vendedor_pkey PRIMARY KEY (cod_vendedor),
     CONSTRAINT vendedor_fkey FOREIGN KEY (cpf_v) REFERENCES funcionario(cpf_f)
     
 );
@@ -68,13 +66,13 @@ CREATE TABLE atendente (
     Cod_Atendente VARCHAR2 (3) NOT NULL,
     cpf_a VARCHAR2 (5),
     
-    CONSTRAINT atendente_pkey PRIMARY KEY (cpf_a),
+    CONSTRAINT atendente_pkey PRIMARY KEY (Cod_Atendente),
     CONSTRAINT atendente_fkey FOREIGN KEY (cpf_a) REFERENCES funcionario(cpf_f)
 
 );
 --Fabricante
 CREATE TABLE fabricante (
-  cnpj VARCHAR2(255)
+  cnpj VARCHAR2(255),
   nome_fabri VARCHAR2 (255) NOT NULL,
 
   CONSTRAINT fabricante_pkey PRIMARY KEY (cnpj)
@@ -101,10 +99,10 @@ CREATE TABLE consulta (
     data_hora_consulta TIMESTAMP NOT NULL,
 
     CONSTRAINT consulta_pkey PRIMARY KEY (cpf_c, crn),
-    CONSTRAINT consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c)
+    CONSTRAINT consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
     CONSTRAINT consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn)
 );
-
+-- Marcar Consulta
 CREATE TABLE marcar_consulta (
     cpf_c VARCHAR2(5),
     crn VARCHAR2(5),
@@ -124,10 +122,10 @@ CREATE TABLE prescreve (
     cnpj_f VARCHAR2(5),
     nome_p VARCHAR2(255),
     
-    CONSTRAINT prescreve_pkey PRIMARY KEY (cpf_c, crn, cnpj_f, nome_p)
-    CONSTRAINT prescreve_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c)
-    CONSTRAINT prescreve_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn)
-    CONSTRAINT prescreve_fkey FOREIGN KEY (cnpj_f, nome_p) REFERENCES produto (cnpj_f, nome_p)
+    CONSTRAINT prescreve_pkey PRIMARY KEY (cpf_c, crn, cnpj_f, nome_p),
+    CONSTRAINT prescreve_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
+    CONSTRAINT prescreve_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn),
+    CONSTRAINT prescreve_prod_fkey FOREIGN KEY (cnpj_f, nome_p) REFERENCES produto (cnpj_f, nome_p)
 );
 
 --Compra
@@ -135,13 +133,13 @@ CREATE TABLE compra (
   cpf_c VARCHAR2(5),
   cnpj_f VARCHAR2(5),
   nome_p VARCHAR2(255),
-  cod_vendedor VARCHAR2(3),
   data_hora_compra TIMESTAMP NOT NULL,
+  cod_vendedor VARCHAR2(3),
   
-  CONSTRAINT compra_pkey PRIMARY KEY (cpf_c, cnpj_f, nome_p),
-  CONSTRAINT compra_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
-  CONSTRAINT compra_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj,nome_p),
-  CONSTRAINT compra_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
+  CONSTRAINT compra_pkey PRIMARY KEY (cpf_c, cnpj_f, nome_p, data_hora_compra),
+  CONSTRAINT compra_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
+  CONSTRAINT compra_cnpj_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj_f,nome_p),
+  CONSTRAINT compra_cod_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
   
 );
 
@@ -150,6 +148,6 @@ CREATE TABLE telefone (
     cpf_c VARCHAR2(5),
     telefone_c NUMBER NOT NULL,
 
-    CONSTRAINT telefone_pkey PRIMARY KEY (cpf_c, telefone_c)
+    CONSTRAINT telefone_pkey PRIMARY KEY (cpf_c, telefone_c),
     CONSTRAINT telefone_fkey FOREIGN KEY (cpf_c)  REFERENCES cliente (cpf_c) 
 );
