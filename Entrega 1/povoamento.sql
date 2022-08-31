@@ -161,99 +161,99 @@ INSERT INTO produto (cnpj_f, nome_p, valor_compra, valor_revenda, estoque, data_
 INSERT INTO produto (cnpj_f, nome_p, valor_compra, valor_revenda, estoque, data_fabricacao, data_vencimento) VALUES
 ('15975','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd') );
 
---Inserindo Consulta TO_TIMESTAMP('2022-02-09 07:00:00', 'YYYY-MM-DD HH24:MI:SS'
+--Inserindo Consulta TO_TIMESTAMP('2022-02-09 07:00:00', 'YYYY-MM-DD HH24:MI:SS' ♥
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('32387', '087', TO_TIMESTAMP('2022-09-04 14:30:00', 'YYYY-MM-DD HH24:MI:SS');
+('32387', '087', TO_TIMESTAMP('2022-09-04 14:30:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('39511', '870', '2022-09-04 15:30');
+('39511', '870', TO_TIMESTAMP('2022-09-04 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('68703', '404', '2022-09-04 8:30');
+('68703', '404', TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('93818', '101', '2022-09-04 14:30');
+('93818', '101', TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('32966', '404', '2022-09-04 10:30');
+('32966', '404', TO_TIMESTAMP('2022-09-04 10:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('32387', '087', '2022-10-07 14:30');
+('32387', '087', TO_TIMESTAMP('2022-10-07 14:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('39511', '870', '2022-10-05 16:30');
+('39511', '870', TO_TIMESTAMP('2022-10-05 16:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('68703', '404', '2022-10-04 9:30');
+('68703', '404', TO_TIMESTAMP('2022-10-04 9:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('93818', '101', '2022-10-10 15:30');
+('93818', '101', TO_TIMESTAMP('2022-10-10 15:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('32966', '404', '2022-10-03 10:30');
+('32966', '404', TO_TIMESTAMP('2022-10-03 10:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('81783', '087', '2022-09-05 14:00');
+('81783', '087', TO_TIMESTAMP('2022-09-05 14:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('00182', '870', '2022-09-06 15:30');
+('00182', '870', TO_TIMESTAMP('2022-09-06 15:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('69221', '404', '2022-09-05 9:00');
+('69221', '404', TO_TIMESTAMP('2022-09-05 9:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('40942', '101', '2022-09-05 15:00');
+('40942', '101', TO_TIMESTAMP('2022-09-05 15:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('48509', '404', '2022-09-05 10:30');
+('48509', '404', TO_TIMESTAMP('2022-09-05 10:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('81783', '087', '2022-10-05 14:30');
+('81783', '087', TO_TIMESTAMP('2022-10-05 14:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('00182', '870', '2022-10-05 15:30');
+('00182', '870', TO_TIMESTAMP('2022-10-05 15:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('69221', '404', '2022-10-06 9:30');
+('69221', '404', TO_TIMESTAMP('2022-10-06 9:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('40942', '101', '2022-10-12 15:30');
+('40942', '101', TO_TIMESTAMP('2022-10-12 15:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO consulta(cpf_c, crn, data_hora_consulta) VALUES
-('48509', '404', '2022-10-06 10:30');
+('48509', '404', TO_TIMESTAMP('2022-10-06 10:30', 'YYYY-MM-DD HH24:MI:SS'));
 
 --Inserindo Marcar Consulta TO_TIMESTAMP('2022-02-09 07:00:00', 'YYYY-MM-DD HH24:MI:SS'
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('32387', '087', '012','2022-09-04 14:30');
+('32387', '087', '012',TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('39511', '870', '012','2022-09-04 15:30');
+('39511', '870', '012',TO_TIMESTAMP('2022-09-04 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('68703', '404','022', '2022-09-04 8:30');
+('68703', '404','022', TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('93818', '101','012', '2022-09-04 14:30');
+('93818', '101','012', TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('32966', '404','022' '2022-09-04 10:30');
+('32966', '404','022', TO_TIMESTAMP('2022-09-04 10:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('32387', '087', '012','2022-10-07 14:30');
+('32387', '087', '012',TO_TIMESTAMP('2022-10-07 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('39511', '870', '012','2022-10-05 16:30');
+('39511', '870', '012',TO_TIMESTAMP('2022-10-05 16:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('68703', '404', '022', '2022-10-04 9:30');
+('68703', '404', '022', TO_TIMESTAMP('2022-10-04 9:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('93818', '101', '012','2022-10-10 15:30');
+('93818', '101', '012',TO_TIMESTAMP('2022-10-10 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('32966', '404', '022', '2022-10-03 10:30');
+('32966', '404', '022', TO_TIMESTAMP('2022-10-03 10:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('81783', '087', '012','2022-09-05 14:00');
+('81783', '087', '012',TO_TIMESTAMP('2022-09-05 14:00','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('00182', '870', '012','2022-09-06 15:30');
+('00182', '870', '012',TO_TIMESTAMP('2022-09-06 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('69221', '404','022', '2022-09-05 9:00');
+('69221', '404','022', TO_TIMESTAMP('2022-09-05 9:00','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('40942', '101', '012','2022-09-05 15:00');
+('40942', '101', '012',TO_TIMESTAMP('2022-09-05 15:00','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('48509', '404','022', '2022-09-05 10:30');
+('48509', '404','022', TO_TIMESTAMP('2022-09-05 10:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('81783', '087', '012','2022-10-05 14:30');
+('81783', '087', '012',TO_TIMESTAMP('2022-10-05 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('00182', '870', '012','2022-10-05 15:30');
+('00182', '870', '012',TO_TIMESTAMP('2022-10-05 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('69221', '404','022', '2022-10-06 9:30');
+('69221', '404','022', TO_TIMESTAMP('2022-10-06 9:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('40942', '101', '012','2022-10-12 15:30');
+('40942', '101', '012',TO_TIMESTAMP('2022-10-12 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
-('48509', '404','022', '2022-10-06 10:30');
+('48509', '404','022', TO_TIMESTAMP('2022-10-06 10:30','YYYY-MM-DD HH24:MI:SS'));
 
 -- Inserindo Compra
 INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('32387','34346','WHEY','2022-09-04 15:35','001');
+('32387','34346','WHEY',TO_TIMESTAMP('2022-09-04 15:35','YYYY-MM-DD HH24:MI:SS'),'001');
 INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('39511','78549','CREATINA','2022-09-04 16:35','001');
+('39511','78549','CREATINA',TO_TIMESTAMP('2022-09-04 16:35','YYYY-MM-DD HH24:MI:SS'),'001');
 INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('68703','14548','ALBUMINA','2022-09-04 09:35','010');
+('68703','14548','ALBUMINA',TO_TIMESTAMP('2022-09-04 09:35','YYYY-MM-DD HH24:MI:SS'),'010');
 INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('93818','15975','WHEY','2022-09-04 14:35','001');
+('93818','15975','WHEY',TO_TIMESTAMP('2022-09-04 14:35','YYYY-MM-DD HH24:MI:SS'),'001');
 
 -- Inserindo Prescreve ♥
 INSERT INTO prescreve (cpf_c, crn, cnpj_f, nome_p) VALUES 

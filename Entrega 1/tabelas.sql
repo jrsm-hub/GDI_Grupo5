@@ -99,7 +99,7 @@ CREATE TABLE consulta (
     crn VARCHAR2 (4),
     data_hora_consulta TIMESTAMP NOT NULL,
 
-    CONSTRAINT consulta_pkey PRIMARY KEY (cpf_c, crn),
+    CONSTRAINT consulta_pkey PRIMARY KEY (cpf_c, crn, data_hora_consulta),
     CONSTRAINT consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
     CONSTRAINT consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn)
 );
@@ -110,7 +110,7 @@ CREATE TABLE marcar_consulta (
     Cod_Atendente VARCHAR2(5),
     data_hora_marcada TIMESTAMP NOT NULL,
 
-    CONSTRAINT marcar_consulta_pkey PRIMARY KEY (cpf_c, crn, Cod_Atendente),
+    CONSTRAINT marcar_consulta_pkey PRIMARY KEY (cpf_c, crn, Cod_Atendente, data_hora_marcada),
     CONSTRAINT marcar_consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
     CONSTRAINT marcar_consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn),
     CONSTRAINT marcar_consulta_cod_fkey FOREIGN KEY (Cod_Atendente) REFERENCES atendente (Cod_Atendente)
