@@ -39,13 +39,14 @@ CREATE TABLE funcionario (
     salario NUMBER (*,2),
     cpf_ger VARCHAR2 (5),
     
-    CONSTRAINT funcionario_check CHECK (salario >= 1212.00),
+    CONSTRAINT funcionario_cargo_check CHECK (cargo in ('NUTRI', 'VEND', 'ATEND')),
+    CONSTRAINT funcionario_sal_check CHECK (salario >= 1212.00),
     CONSTRAINT funcionario_pkey PRIMARY KEY (cpf_f),
     CONSTRAINT funcionario_fkey FOREIGN KEY (cpf_ger) REFERENCES funcionario (cpf_f)
 );
 --Nutricionista
 CREATE TABLE nutricionista (
-    crn VARCHAR2 (5),
+    crn VARCHAR2 (3),
     cpf_n VARCHAR2 (5),
     
     CONSTRAINT nutricionista_pkey PRIMARY KEY (crn),
