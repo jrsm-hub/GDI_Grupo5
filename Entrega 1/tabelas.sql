@@ -131,16 +131,17 @@ CREATE TABLE prescreve (
 
 --Compra
 CREATE TABLE compra (
-  cpf_c VARCHAR2(5),
-  cnpj_f VARCHAR2(5),
-  nome_p VARCHAR2(255),
-  data_hora_compra TIMESTAMP NOT NULL,
-  cod_vendedor VARCHAR2(3),
-  
-  CONSTRAINT compra_pkey PRIMARY KEY (cpf_c, cnpj_f, nome_p, data_hora_compra),
-  CONSTRAINT compra_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
-  CONSTRAINT compra_cnpj_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj_f,nome_p),
-  CONSTRAINT compra_cod_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
+    id INTEGER,
+    cpf_c VARCHAR2(5),
+    cnpj_f VARCHAR2(5),
+    nome_p VARCHAR2(255),
+    data_hora_compra TIMESTAMP NOT NULL,
+    cod_vendedor VARCHAR2(3),
+    
+    CONSTRAINT compra_pkey PRIMARY KEY (id,cpf_c, cnpj_f, nome_p, data_hora_compra),
+    CONSTRAINT compra_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
+    CONSTRAINT compra_cnpj_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj_f,nome_p),
+    CONSTRAINT compra_cod_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
   
 );
 

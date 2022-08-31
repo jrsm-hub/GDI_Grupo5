@@ -1,5 +1,11 @@
 -- Povoamento das tabelas
 
+--Sequencia para o id de compra
+CREATE SEQUENCE id INCREMENT by 1 START WITH 1;
+
+--Formato data e hora
+ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS';
+
 --INSERINDO PESSOA ♥
 INSERT INTO pessoa (cpf, nome, sexo, idade, cep, numero, complemento) VALUES
    ('13418','Ana Luiza Porto','F',29,'26147',123,'apto 603');
@@ -246,14 +252,14 @@ INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
 ('48509', '404','022', TO_TIMESTAMP('2022-10-06 10:30','YYYY-MM-DD HH24:MI:SS'));
 
 -- Inserindo Compra
-INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('32387','34346','WHEY',TO_TIMESTAMP('2022-09-04 15:35','YYYY-MM-DD HH24:MI:SS'),'001');
-INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('39511','78549','CREATINA',TO_TIMESTAMP('2022-09-04 16:35','YYYY-MM-DD HH24:MI:SS'),'001');
-INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('68703','14548','ALBUMINA',TO_TIMESTAMP('2022-09-04 09:35','YYYY-MM-DD HH24:MI:SS'),'010');
-INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
-('93818','15975','WHEY',TO_TIMESTAMP('2022-09-04 14:35','YYYY-MM-DD HH24:MI:SS'),'001');
+INSERT INTO compra (id, cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
+(id.NEXTVAL, '32387','34346','WHEY',TO_TIMESTAMP('2022-09-04 15:35','YYYY-MM-DD HH24:MI:SS'),'001');
+INSERT INTO compra (id, cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
+(id.NEXTVAL, '39511','78549','CREATINA',TO_TIMESTAMP('2022-09-04 16:35','YYYY-MM-DD HH24:MI:SS'),'001');
+INSERT INTO compra (id, cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
+(id.NEXTVAL, '68703','14548','ALBUMINA',TO_TIMESTAMP('2022-09-04 09:35','YYYY-MM-DD HH24:MI:SS'),'010');
+INSERT INTO compra (id, cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
+(id.NEXTVAL, '93818','15975','WHEY',TO_TIMESTAMP('2022-09-04 14:35','YYYY-MM-DD HH24:MI:SS'),'001');
 
 -- Inserindo Prescreve ♥
 INSERT INTO prescreve (cpf_c, crn, cnpj_f, nome_p) VALUES 
