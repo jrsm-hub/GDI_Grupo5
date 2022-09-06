@@ -8,7 +8,6 @@ CREATE TABLE pessoa (
     idade NUMBER NOT NULL,
     cep VARCHAR2 (5) NOT NULL,
     numero NUMBER NOT NULL,
-    complemento VARCHAR2 (255) NOT NULL,
 
     CONSTRAINT pessoa_pkey PRIMARY KEY (cpf),
     CONSTRAINT pessoa_checkGenero CHECK (sexo = 'M' OR sexo = 'F')
@@ -153,3 +152,6 @@ CREATE TABLE telefone (
     CONSTRAINT telefone_pkey PRIMARY KEY (cpf_c, telefone_c),
     CONSTRAINT telefone_fkey FOREIGN KEY (cpf_c)  REFERENCES cliente (cpf_c) 
 );
+
+--ALTER 
+ALTER TABLE pessoa ADD (complemento VARCHAR2 (255) NOT NULL);
