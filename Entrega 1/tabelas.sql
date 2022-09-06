@@ -99,7 +99,7 @@ CREATE TABLE consulta (
     crn VARCHAR2 (4),
     data_hora_consulta TIMESTAMP NOT NULL,
 
-    CONSTRAINT consulta_pkey PRIMARY KEY (cpf_c, crn),
+    CONSTRAINT consulta_pkey PRIMARY KEY (cpf_c, crn, data_hora_consulta),
     CONSTRAINT consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
     CONSTRAINT consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn)
 );
@@ -110,7 +110,7 @@ CREATE TABLE marcar_consulta (
     Cod_Atendente VARCHAR2(5),
     data_hora_marcada TIMESTAMP NOT NULL,
 
-    CONSTRAINT marcar_consulta_pkey PRIMARY KEY (cpf_c, crn, Cod_Atendente),
+    CONSTRAINT marcar_consulta_pkey PRIMARY KEY (cpf_c, crn, Cod_Atendente, data_hora_marcada),
     CONSTRAINT marcar_consulta_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente (cpf_c),
     CONSTRAINT marcar_consulta_crn_fkey FOREIGN KEY (crn) REFERENCES nutricionista (crn),
     CONSTRAINT marcar_consulta_cod_fkey FOREIGN KEY (Cod_Atendente) REFERENCES atendente (Cod_Atendente)
@@ -131,16 +131,17 @@ CREATE TABLE prescreve (
 
 --Compra
 CREATE TABLE compra (
-  cpf_c VARCHAR2(5),
-  cnpj_f VARCHAR2(5),
-  nome_p VARCHAR2(255),
-  data_hora_compra TIMESTAMP NOT NULL,
-  cod_vendedor VARCHAR2(3),
-  
-  CONSTRAINT compra_pkey PRIMARY KEY (cpf_c, cnpj_f, nome_p, data_hora_compra),
-  CONSTRAINT compra_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
-  CONSTRAINT compra_cnpj_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj_f,nome_p),
-  CONSTRAINT compra_cod_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
+    id INTEGER,
+    cpf_c VARCHAR2(5),
+    cnpj_f VARCHAR2(5),
+    nome_p VARCHAR2(255),
+    data_hora_compra TIMESTAMP NOT NULL,
+    cod_vendedor VARCHAR2(3),
+    
+    CONSTRAINT compra_pkey PRIMARY KEY (id,cpf_c, cnpj_f, nome_p, data_hora_compra),
+    CONSTRAINT compra_cpf_fkey FOREIGN KEY (cpf_c) REFERENCES cliente(cpf_c),
+    CONSTRAINT compra_cnpj_fkey FOREIGN KEY (cnpj_f,nome_p) REFERENCES produto (cnpj_f,nome_p),
+    CONSTRAINT compra_cod_fkey FOREIGN KEY (cod_vendedor) REFERENCES vendedor(cod_vendedor)
   
 );
 
