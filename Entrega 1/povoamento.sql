@@ -245,7 +245,7 @@ INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
 INSERT INTO marcar_consulta(cpf_c, crn, Cod_Atendente, data_hora_marcada) VALUES
 ('48509', '404','022', '2022-10-06 10:30');
 
--- Inserindo Compra
+-- Inserindo Compra TO_TIMESTAMP('2022-02-09 07:00:00', 'YYYY-MM-DD HH24:MI:SS'
 INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
 ('32387','34346','WHEY','2022-09-04 15:35','001');
 INSERT INTO compra (cpf_c, cnpj_f, nome_p, data_hora_compra, cod_vendedor) VALUES 
