@@ -44,12 +44,12 @@ END;
 --FOR IN LOOP x 
 --SELECT INTO X -- tem no procedure mas tem que ver se funciona 
 --CURSOR (OPEN, FETCH e CLOSE)  X
---EXCEPTION WHEN 
+--EXCEPTION WHEN X
 --USO DE PARAMETROS (IN, OUT ou IN OUT) -- tem no procedure mas tem que ver se funciona 
 --CREATE OR REPLACE PACKAGE 
 --CREATE OR REPLACE PACKAGE BODY 
---CREATE OR REPLACE TRIGGER (COMANDO) 
---CREATE OR REPLACE TRIGGER (LINHA) 
+--CREATE OR REPLACE TRIGGER (COMANDO) X
+--CREATE OR REPLACE TRIGGER (LINHA) X
 
 
 -- CURSOR, %ROWTYPE, LOOP, BLOCO ANONIMO
@@ -67,4 +67,41 @@ BEGIN
       DBMS_OUTPUT.put_line('CPF:'||cliente_rec.cpf_c || ' Nome:' || cliente_rec.nome || ' Idade:' || cliente_rec.idade);
    END LOOP; 
    CLOSE;
+END;
+
+/* Exception when e Create or Replace Trigger(comando) - Seraá retornado uma mensagem de erro 
+caso uma compra sejá inserida fora do horário de funcionamento */
+
+CREATE OR REPLACE TRIGGER compra_fora_horario
+BEFORE INSERT ON compra
+DECLARE
+
+   compra_fora_horario EXCEPTION;
+
+BEGIN 
+   IF TO_NUMBER(SYSDATE, 'hh24') > 21 OR TO_NUMBER(SYSDATe, 'HH24') < 8
+   THEN
+      DBMS_OUTPUT.PUT_LINE('COMPRA FORA DO HORÁRIO DE FUNCIONAMENTO')
+      RAISE compra_fora_horario;
+   END IF;
+EXCEPTION
+WHEN compra_fora_horario THEN
+   Raise_application_error(-20202, 'FORA DO HORÁRIO DE FUNCIONAMENTO' || 'Não há como realizar uma compra após o horário de funcionamento');
+END;
+
+-- Create or Replace Trigger é ativado quando se tenta inserir um produto com preço de venda negativo.
+
+CREATE or REPLACE TRIGGER preco_venda_negativo
+BEFORE INSERT ON produto
+FOR EACH ROW
+DECLARE
+   preco_venda_negativo EXCEPTION;
+BEGIN
+   IF : NEW.valor_revenda < 0 THEN
+      DBMS_OUTPUT.PUT_LINE('VALOR DE VENDA NEGATIVO');
+      RAISE preco_venda_negativo;
+   END IF;
+EXCEPTION
+   WHEN preco_venda_negativo THEN
+   Raise_application_error(-20202, 'Valor de venda negativo ' || 'Não é permitido colocar valor de venda negativo.');
 END;
