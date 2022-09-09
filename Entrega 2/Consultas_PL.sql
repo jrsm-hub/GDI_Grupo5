@@ -227,7 +227,7 @@ BEGIN
    END IF;
 EXCEPTION
    WHEN preco_venda_negativo THEN
-   Raise_application_error(-20202, 'Valor de venda negativo .' || 'Não é permitido colocar valor de venda negativo.');
+   Raise_application_error(-20202, 'Valor de venda negativo. ' || 'Não é permitido colocar valor de venda negativo.');
 END;
 
 
