@@ -2,7 +2,8 @@
 -- Olhar o fim do script de criação de tabelas (Linha 158) 
 
 --CREATE INDEX
-CREATE UNIQUE INDEX indice_sal ON FUNCIONARIO (salario);
+--Cria um índice para salário, tornando mais fácil sua busca
+CREATE INDEX indice_sal ON FUNCIONARIO (salario);
 
 --INSERT INTO
 --inserir novo funcionário
@@ -41,15 +42,16 @@ SELECT nome_p, valor_revenda FROM produto WHERE estoque IS NOT NULL;
 --mostrar o nome de todas os clientes com o plano de saúde unimed
 SELECT P.nome FROM pessoa P INNER JOIN cliente C ON P.cpf = C.cpf_c WHERE C.plano_saude = 'UNIMED';
 
-
 --MAX
 --mostrar o nome e cpf do funcionário com maior salário
 SELECT p.nome, f.cpf_f  FROM pessoa P, funcionario F  WHERE p.cpf=f.cpf_f and F.salario = (SELECT MAX(salario) FROM funcionario);
 
 --MIN
+--Comando feito para saber a data de vencimento do produto com menor estoque, pois supõe-se que se o estoque está pequeno, ou estã sendo muito comprado ou o produto está lá há muito tempo
 SELECT nome_p,data_vencimento FROM produto P WHERE p.estoque = (SELECT MIN(estoque) FROM produto);
 
 --AVG
+--Comando que retorna a média dos valores da coluna percentual_gordura
 SELECT avg(percentual_gordura) from cliente;
 
 --COUNT
@@ -61,7 +63,9 @@ SELECT count(*) from marcar_consulta M where M.crn = (SELECT N.crn from nutricio
 SELECT P.nome, T.telefone_c FROM telefone T FULL OUTER JOIN pessoa P ON P.cpf = T.cpf_c;
 
 --SUBCONSULTA COM OPERADOR RELACIONAL
-SELECT P.nome_p,F.nome_fabri, P.estoque FROM produto P, fabricante F WHERE P.cnpj_f = F.cnpj and P.estoque < 20;
+--mostra os produtos cujo valor de revenda é maior que o valor médio de revenda
+SELECT Pr.nome_p, Pr.estoque From produto Pr WHERE Pr.valor_revenda > (SELECT AVG(valor_revenda) FROM produto);
+
 
 --SUBCONSULTA COM IN
 --mostrar data e hora da compra e o nome dos produtos do fabricante growth que foram comprados na loja
@@ -93,9 +97,12 @@ SELECT F.cargo, COUNT(*) as total FROM Funcionario F WHERE F.salario > 2500 GROU
 SELECT cod_vendedor FROM vendedor UNION SELECT cod_atendente FROM atendente;
 
 --CREATE VIEW
+--Cria uma tabela virtual com os clientes marcados, comparando o cpf do cliente com os do banco pessoa para saber o nome do cliente marcado
 CREATE VIEW Clientes_Marcados AS SELECT P.nome, C.data_hora_consulta FROM pessoa P, consulta C WHERE C.cpf_c = P.cpf and P.cpf IN (SELECT cpf_c FROM consulta); 
 SELECT * FROM Clientes_Marcados;
 
 --GRANT / REVOKE
+-- Garantir todos os privilégios na tabela de cliente para o público em geral
 GRANT ALL PRIVILEGES ON Cliente TO PUBLIC;
-REVOKE DELETE ON Nutricionista FROM PUBLIC;
+-- Remover o privilégio de DELETE na tabela nutricionista para o público em geral
+REVOKE DELETE ON Nutricionista FROM PUBLIC; 
