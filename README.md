@@ -1,5 +1,5 @@
-"# GDI_Grupo5" 
-[Arthur Lacet](https://github.com/ArthurLacet)  
+"# GDI_Grupo5"   
+[Arthur Lacet](https://github.com/ArthurLacet)    
 [Arthur Leal](https://github.com/arturlealbs)  
 [Carlos Clark](https://github.com/cemc-git)  
 [Rodrigo Moura](https://github.com/jrsm-hub)  
