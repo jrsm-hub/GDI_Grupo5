@@ -92,6 +92,7 @@ CREATE TABLE produto(
     CONSTRAINT produto_pkey PRIMARY KEY (cnpj_f, nome_p)
 );
 
+
 --Consulta
 CREATE TABLE consulta (
     cpf_c VARCHAR2 (5),
