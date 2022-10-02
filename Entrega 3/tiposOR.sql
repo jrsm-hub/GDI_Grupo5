@@ -251,6 +251,7 @@ CREATE OR REPLACE TYPE tp_compra AS OBJECT(
     data_hora_compra TIMESTAMP
 
 );
+
 /*
 
 CHECKLIST
