@@ -71,10 +71,40 @@ INSERT INTO tb_atendente VALUES (tp_atendente('98977','Laís Rocha','F',20,tp_en
 --PRODUTO
 --TROCAR O PRIMEIRO CODIGO POR UM VALOR ALEATORIO DE 3 DIGITOS (NAO PODEM SER REPETIDOS)
 INSERT INTO tb_produto VALUES (tp_produto('343','WHEY', 80, 100, 45,  to_date('2022-04-16','yyyy-mm-dd'), to_date('2025-04-16','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('344','CREATINA', 100, 125, 10, to_date('2021-01-1','yyyy-mm-dd'), to_date('2022-01-01','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('345','ALBUMINA', 60, 85, 00, to_date('2021-05-11','yyyy-mm-dd'), to_date('2024-05-11','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('346','CAFEINA', 20, 40, 32, to_date('2021-08-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('785','WHEY', 100, 120, 75, to_date('2021-06-07','yyyy-mm-dd'), to_date('2023-06-07','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('786','CREATINA', 105, 130, 00, to_date('2020-09-30','yyyy-mm-dd'), to_date('2022-09-30','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('787','ALBUMINA', 55, 70, 85, to_date('2022-06-27','yyyy-mm-dd'), to_date('2024-06-27','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('788','CAFEINA', 25, 35, 55, to_date('2021-09-04','yyyy-mm-dd'), to_date('2024-09-04','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('145','WHEY', 75, 90, 22, to_date('2021-03-04','yyyy-mm-dd'), to_date('2023-03-04','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('146','CREATINA', 80, 100, 17, to_date('2021-06-07','yyyy-mm-dd'), to_date('2024-06-07','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('148','CAFEINA', 22, 35, 14, to_date('2022-01-30','yyyy-mm-dd'), to_date('2025-01-30','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('259','WHEY','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('260','WHEY','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('261','WHEY','ALBUMINA', 55, 70, 50, to_date('2022-01-22','yyyy-mm-dd'), to_date('2024-01-22','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('262','WHEY','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd')));
 
 --FABRICANTE
 
 INSERT INTO tb_fabricante VALUES ('34346','MAX', tp_nt_fornece(tp_produto('343','WHEY', 80, 100, 45,  to_date('2022-04-16','yyyy-mm-dd'), to_date('2025-04-16','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('34346','MAX', tp_nt_fornece(tp_produto('344','CREATINA', 100, 125, 10, to_date('2021-01-1','yyyy-mm-dd'), to_date('2022-01-01','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('34346','MAX', tp_nt_fornece(tp_produto('345','ALBUMINA', 60, 85, 00, to_date('2021-05-11','yyyy-mm-dd'), to_date('2024-05-11','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('34346','MAX', tp_nt_fornece(tp_produto('346','CAFEINA', 20, 40, 32, to_date('2021-08-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('78549','INTEGRAL', tp_nt_fornece(tp_produto('785','WHEY', 100, 120, 75, to_date('2021-06-07','yyyy-mm-dd'), to_date('2023-06-07','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('78549','INTEGRAL',tp_nt_fornece(tp_produto('786','CREATINA', 105, 130, 00, to_date('2020-09-30','yyyy-mm-dd'), to_date('2022-09-30','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('78549','INTEGRAL', tp_nt_fornece(tp_produto('787','ALBUMINA', 55, 70, 85, to_date('2022-06-27','yyyy-mm-dd'), to_date('2024-06-27','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('78549','INTEGRAL', tp_nt_fornece(tp_produto('788','CAFEINA', 25, 35, 55, to_date('2021-09-04','yyyy-mm-dd'), to_date('2024-09-04','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('145','WHEY', 75, 90, 22, to_date('2021-03-04','yyyy-mm-dd'), to_date('2023-03-04','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('146','CREATINA', 80, 100, 17, to_date('2021-06-07','yyyy-mm-dd'), to_date('2024-06-07','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('148','CAFEINA', 22, 35, 14, to_date('2022-01-30','yyyy-mm-dd'), to_date('2025-01-30','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('259','WHEY','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('260','WHEY','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd')))); 
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('261','WHEY','ALBUMINA', 55, 70, 50, to_date('2022-01-22','yyyy-mm-dd'), to_date('2024-01-22','yyyy-mm-dd')))); 
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('262','WHEY','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd')))); 
 
 --CONSULTA
 
