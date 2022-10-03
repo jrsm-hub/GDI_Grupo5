@@ -6,7 +6,6 @@ CREATE TABLE tb_pessoa(
     sexo CHAR,
     idade NUMBER NOT NULL,
     endereco tp_endereco NOT NULL,
-    telefones tp_telefones,
     
     CONSTRAINT pessoa_pkey PRIMARY KEY (cpf_p)
 );
@@ -50,7 +49,6 @@ CREATE TABLE tb_funcionario OF tp_funcionario(
 -- TABELA NUTRICIONISTA
 
 CREATE TABLE tb_nutricionista OF tp_nutricionista(
-    crn PRIMARY KEY,
     cpf NOT NULL UNIQUE,
     nome NOT NULL,
     sexo NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
@@ -59,7 +57,8 @@ CREATE TABLE tb_nutricionista OF tp_nutricionista(
     data_admissao NOT NULL,
     cargo NOT NULL,
     salario NOT NULL,
-    gerente SCOPE IS tb_nutricionista
+    gerente SCOPE IS tb_nutricionista,
+    crn PRIMARY KEY
 );
 
 -- TABELA VENDEDOR

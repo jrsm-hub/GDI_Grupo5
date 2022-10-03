@@ -25,8 +25,8 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
     nome VARCHAR2 (255),
     sexo CHAR,
     idade NUMBER,
-    endereco tp_endereco,
-    telefones tp_telefones
+    endereco tp_endereco
+
 )NOT INSTANTIABLE NOT FINAL;
 
 /
@@ -34,6 +34,7 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 --CLIENTE
 
 CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
+    telefones tp_telefones,
     peso NUMBER,
     altura NUMBER,
     percentual_gordura NUMBER,

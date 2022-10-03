@@ -88,7 +88,7 @@ INSERT INTO funcionario (cpf_f, data_admissao, cargo, salario, cpf_ger) VALUES
 INSERT INTO funcionario (cpf_f, data_admissao, cargo, salario, cpf_ger) VALUES
 ('42619', to_date('2021-06-02','yyyy-mm-dd'), 'VEND', 3000.00, '42619');
 INSERT INTO funcionario (cpf_f, data_admissao, cargo, salario, cpf_ger) VALUES
-('13418', to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 9500.00, '13418');
+('13418', to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, '12513');
 INSERT INTO funcionario (cpf_f, data_admissao, cargo, salario, cpf_ger) VALUES
 ('31819', to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 2200.00, '12513');
 INSERT INTO funcionario (cpf_f, data_admissao, cargo, salario, cpf_ger) VALUES
