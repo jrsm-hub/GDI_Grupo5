@@ -6,7 +6,7 @@ CREATE TABLE tb_pessoa(
     sexo CHAR,
     idade NUMBER NOT NULL,
     endereco tp_endereco NOT NULL,
-    telefones tp_telefones NOT NULL,
+    telefones tp_telefones,
     
     CONSTRAINT pessoa_pkey PRIMARY KEY (cpf_p)
 );
@@ -27,8 +27,8 @@ CREATE TABLE tb_cliente(
     plano_saude VARCHAR2(255) NOT NULL,
 
 
-    CONSTRAINT pessoa_pkey PRIMARY KEY (cpf),
-    CONSTRAINT pessoa_checkGenero CHECK (sexo = 'M' OR sexo = 'F')
+    CONSTRAINT cliente_pkey PRIMARY KEY (cpf),
+    CONSTRAINT cliente_checkGenero CHECK (sexo = 'M' OR sexo = 'F')
     
 );
 
