@@ -1,4 +1,4 @@
---PESSOA
+--PESSOA ♥
 
 INSERT INTO tb_pessoa VALUES('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'));
 INSERT INTO tb_pessoa VALUES('22548','Pedro Henrique Pires','M',21,tp_endereco('26157',144,'apto 402'));
@@ -24,7 +24,7 @@ INSERT INTO tb_pessoa VALUES('73416','Luiz Fernando Pires','M',16,tp_endereco('5
 INSERT INTO tb_pessoa VALUES('32966','Cecília Santos','F',23,tp_endereco('50020',1462,'apto 1101'));
 
 
--- CLIENTE
+-- CLIENTE ♥
 
 INSERT INTO tb_cliente VALUES ('32387', 'Alícia Sales', 'F', 17, tp_endereco('50020', 1216 , 'apto 102'), tp_telefones(tp_telefone('81989526545')), 58, 164, 28, 'ENDO', 'UNIMED');
 INSERT INTO tb_cliente VALUES ('81783', 'Júlia Pires', 'F', 25, tp_endereco('50020', 1200 ,'apto 404'), tp_telefones(tp_telefone('81981491538')), 44, 168, 17, 'ECTO', 'FISCO');
@@ -42,22 +42,29 @@ INSERT INTO tb_cliente VALUES ('73416','Luiz Fernando Pires','M',16, tp_endereco
 INSERT INTO tb_cliente VALUES ('32966','Cecília Santos','F',23, tp_endereco('50020',1462,'apto 1101'), tp_telefones(tp_telefone('81995405235')), 74, 162, 32, 'ENDO', 'HAPVIDA');
 
 
---FUNCIONARIO
-INSERT INTO tb_funcionario VALUES (tp_funcionario('12513','Raul Nascimento','M',40,tp_endereco('50010',966,'apto 701'),to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL)); --NOS CASOS QUE O CARA É GERENTE DELE MESMO BOTA NULL
-INSERT INTO tb_funcionario VALUES (tp_funcionario('42619','Benício Ramos','M',31, tp_endereco('50010',932,'apto 2102'), to_date('2021-06-02','yyyy-mm-dd'), 'VEND', 3000.00,NULL));
-INSERT INTO tb_funcionario VALUES (tp_funcionario('31819','Nathan Peixoto','M',23, tp_endereco('50020',1200,'apto 301'), to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 2200.00,   (SELECT REF(F) FROM tb_funcionario F WHERE cpf = '12513')));  
+--FUNCIONARIO ♥
+INSERT INTO tb_funcionario VALUES (tp_funcionario('12513','Raul Nascimento','M',40,tp_endereco('50010',966,'apto 701'),to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL)); 
+INSERT INTO tb_funcionario VALUES (tp_funcionario('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513')));
+INSERT INTO tb_funcionario VALUES (tp_funcionario('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513')));
+INSERT INTO tb_funcionario VALUES (tp_funcionario('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513')));
+INSERT INTO tb_funcionario VALUES (tp_funcionario('31819','Nathan Peixoto','M',31, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL));
+INSERT INTO tb_funcionario VALUES (tp_funcionario('42619','Benício Ramos','M',23, tp_endereco('50010', 932,'apto 2102'),  to_date('2021-06-02','yyyy-mm-dd'), 'VEND', 3000.00, (SELECT REF(V) FROM tb_vendedor V WHERE cpf = '31819')));
+INSERT INTO tb_funcionario VALUES (tp_funcionario('22548','Pedro Henrique Pires','M',21,tp_endereco('26157',144,'apto 402'), to_date('2022-11-07', 'yyyy-mm-dd'), 'ATEND', 2000.00, NULL));
+INSERT INTO tb_funcionario VALUES (tp_funcionario('98977','Laís Rocha','F',20,tp_endereco('50010',932,'apto 1602'), to_date('2021-03-30','yyyy-mm-dd'), 'ATEND', 1800.00, (SELECT REF(F) FROM tb_atendente F WHERE cpf = '22548')));
 
---NUTRICIONISTA
+--NUTRICIONISTA ♥
 
 INSERT INTO tb_nutricionista VALUES (tp_nutricionista('12513', 'Raul Nascimento', 'M', 40, tp_endereco('50010', 966,'apto 701'), to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL, '087'));
 INSERT INTO tb_nutricionista VALUES (tp_nutricionista('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '870'));
+INSERT INTO tb_nutricionista VALUES (tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'));
+INSERT INTO tb_nutricionista VALUES (tp_nutricionista('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '101'));
 
---VENDEDOR
+--VENDEDOR ♥
 
 INSERT INTO tb_vendedor VALUES (tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'));
 INSERT INTO tb_vendedor VALUES (tp_vendedor('42619','Benício Ramos','M',31, tp_endereco('50010', 932,'apto 2102'),  to_date('2021-06-02','yyyy-mm-dd'), 'VEND', 3000.00, (SELECT REF(V) FROM tb_vendedor V WHERE cpf = '31819'), '010'));
 
---ATENDENTE
+--ATENDENTE ♥
 INSERT INTO tb_atendente VALUES (tp_atendente('22548','Pedro Henrique Pires','M',21,tp_endereco('26157',144,'apto 402'), to_date('2022-11-07', 'yyyy-mm-dd'), 'ATEND', 2000.00, NULL, '022'));
 INSERT INTO tb_atendente VALUES (tp_atendente('98977','Laís Rocha','F',20,tp_endereco('50010',932,'apto 1602'), to_date('2021-03-30','yyyy-mm-dd'), 'ATEND', 1800.00, (SELECT REF(F) FROM tb_atendente F WHERE cpf = '22548'), '012'));
 
