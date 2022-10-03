@@ -35,11 +35,12 @@ INSERT INTO tb_cliente VALUES ('69221', 'João Pedro Silveira', 'M', 24, tp_ende
 INSERT INTO tb_cliente VALUES ('48509', 'Caroline Monteiro', 'F', 21, tp_endereco('52050', 654, 'apto 1503' ), tp_telefones(tp_telefone('81991933671')), 76, 175, 18, 'MESO', 'UNIMED');
 INSERT INTO tb_cliente VALUES ('34581', 'Bruno Barros', 'M', 32, tp_endereco('52050', 595, 'apto 202'), tp_telefones(tp_telefone('81973388446')), 71, 173, 18, 'ENDO', 'HAPVIDA');
 INSERT INTO tb_cliente VALUES ('37515', 'Letícia Santos', 'F', 27, tp_endereco('51030', 222, 'apto 301'), tp_telefones(tp_telefone('81989785264')), 68, 166, 14, 'MESO', 'FUSEX');
-INSERT INTO tb_cliente VALUES ('12345', 'Pedro', 'M', 21, tp_endereco('12345', 12 ,'apto 02'), tp_telefones(tp_telefone('81-9 85464766')), 70, 175, 18, 'MESO', 'UNIMED');
-INSERT INTO tb_cliente VALUES ('12345', 'Pedro', 'M', 21, tp_endereco('12345', 12 ,'apto 02'), tp_telefones(tp_telefone('81-9 85464766')), 70, 175, 18, 'MESO', 'UNIMED');
-INSERT INTO tb_cliente VALUES ('12345', 'Pedro', 'M', 21, tp_endereco('12345', 12 ,'apto 02'), tp_telefones(tp_telefone('81-9 85464766')), 70, 175, 18, 'MESO', 'UNIMED');
-INSERT INTO tb_cliente VALUES ('12345', 'Pedro', 'M', 21, tp_endereco('12345', 12 ,'apto 02'), tp_telefones(tp_telefone('81-9 85464766')), 70, 175, 18, 'MESO', 'UNIMED');
-INSERT INTO tb_cliente VALUES ('12345', 'Pedro', 'M', 21, tp_endereco('12345', 12 ,'apto 02'), tp_telefones(tp_telefone('81-9 85464766')), 70, 175, 18, 'MESO', 'UNIMED');
+INSERT INTO tb_cliente VALUES ('40942','Diego Aragão','M',36, tp_endereco('51030',242,'apto 801'), tp_telefones(tp_telefone('81994517784')), 96, 185, 7, 'MESO', 'UNIMED');
+INSERT INTO tb_cliente VALUES ('93818','Agatha Lima','F',24,tp_endereco('52030',450,'apto 101'), tp_telefones(tp_telefone('81970449495')), 60, 155, 24, 'ECTO', 'UNIMED');
+INSERT INTO tb_cliente VALUES ('89670','Maria Cecília Pereira','F',28, tp_endereco('50030',312,'apto 2402'), tp_telefones(tp_telefone('81984314731')), 65, 160, 24, 'MESO', 'AMIL');
+INSERT INTO tb_cliente VALUES ('73416','Luiz Fernando Pires','M',16, tp_endereco('51010',1462,'apto 902'), tp_telefones(tp_telefone('81988686426')), 58, 164, 28, 'ECTO', 'SULAMERICA');
+INSERT INTO tb_cliente VALUES ('32966','Cecília Santos','F',23, tp_endereco('50020',1462,'apto 1101'), tp_telefones(tp_telefone('81995405235')), 74, 162, 32, 'ENDO', 'HAPVIDA');
+
 
 --FUNCIONARIO
 INSERT INTO tb_funcionario VALUES (tp_funcionario('12513','Raul Nascimento','M',40,tp_endereco('50010',966,'apto 701'),to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL)); --NOS CASOS QUE O CARA É GERENTE DELE MESMO BOTA NULL
