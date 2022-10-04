@@ -122,8 +122,74 @@ INSERT INTO tb_consulta VALUES (tp_cliente('68703', 'Diego Silveira', 'M', 19, t
                                 TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));                               
 INSERT INTO tb_consulta VALUES (tp_cliente('93818','Agatha Lima','F',24,tp_endereco('52030',450,'apto 101'), tp_telefones(tp_telefone('81970449495')), 60, 155, 24, 'ECTO', 'UNIMED'), 
                                 tp_nutricionista('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '101'),
+                                tp_nt_prescreve(tp_produto('259','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));  
+INSERT INTO tb_consulta VALUES (tp_cliente('32966','Cecília Santos','F',23, tp_endereco('50020',1462,'apto 1101'), tp_telefones(tp_telefone('81995405235')), 74, 162, 32, 'ENDO', 'HAPVIDA'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                NULL,
+                                TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_consulta VALUES (tp_cliente('32387', 'Alícia Sales', 'F', 17, tp_endereco('50020', 1216 , 'apto 102'), tp_telefones(tp_telefone('81989526545')), 58, 164, 28, 'ENDO', 'UNIMED'), 
+                                tp_nutricionista('12513', 'Raul Nascimento', 'M', 40, tp_endereco('50010', 966,'apto 701'), to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL, '087'),
+                                tp_nt_prescreve(tp_produto('343','WHEY', 80, 100, 45,  to_date('2022-04-16','yyyy-mm-dd'), to_date('2025-04-16','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-10-07 14:30', 'YYYY-MM-DD HH24:MI:SS'));                
+INSERT INTO tb_consulta VALUES (tp_cliente('39511', 'Breno da Rocha', 'M', 28, tp_endereco('50020', 1280 ,'apto 601'), tp_telefones(tp_telefone('81981263621')), 82, 177, 13, 'MESO', 'SULAMERICA'), 
+                                tp_nutricionista('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '870'),
+                                tp_nt_prescreve(tp_produto('786','CREATINA', 105, 130, 00, to_date('2020-09-30','yyyy-mm-dd'), to_date('2022-09-30','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-10-05 16:30', 'YYYY-MM-DD HH24:MI:SS'));  
+INSERT INTO tb_consulta VALUES (tp_cliente('68703', 'Diego Silveira', 'M', 19, tp_endereco('52050', 606,'apto 2701'), tp_telefones(tp_telefone('81985930886')), 64, 182, 14, 'ECTO', 'HAPVIDA'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
                                 tp_nt_prescreve(tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd'))),
-                                TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));  
+                                TO_TIMESTAMP('2022-10-04 9:30', 'YYYY-MM-DD HH24:MI:SS'));  
+INSERT INTO tb_consulta VALUES (tp_cliente('93818','Agatha Lima','F',24,tp_endereco('52030',450,'apto 101'), tp_telefones(tp_telefone('81970449495')), 60, 155, 24, 'ECTO', 'UNIMED'), 
+                                tp_nutricionista('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '101'),
+                                tp_nt_prescreve(tp_produto('259','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-10-10 15:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('32966','Cecília Santos','F',23, tp_endereco('50020',1462,'apto 1101'), tp_telefones(tp_telefone('81995405235')), 74, 162, 32, 'ENDO', 'HAPVIDA'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                NULL,
+                                TO_TIMESTAMP('2022-10-03 10:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('81783', 'Júlia Pires', 'F', 25, tp_endereco('50020', 1200 ,'apto 404'), tp_telefones(tp_telefone('81981491538')), 44, 168, 17, 'ECTO', 'FISCO'), 
+                                tp_nutricionista('12513', 'Raul Nascimento', 'M', 40, tp_endereco('50010', 966,'apto 701'), to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL, '087'),
+                                NULL,
+                                TO_TIMESTAMP('2022-09-05 14:00', 'YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('00182', 'Thomas Alves', 'M', 30, tp_endereco('52050', 610 ,'apto 1802'), tp_telefones(tp_telefone('81997132626')), 94, 184, 19, 'ENDO', 'AMIL'), 
+                                tp_nutricionista('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '870'),
+                                tp_nt_prescreve(tp_produto('260','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-09-06 15:30', 'YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('69221', 'João Pedro Silveira', 'M', 24, tp_endereco('52050', 602, 'apto 602'), tp_telefones(tp_telefone('81996977272')), 88, 174, 22, 'ENDO', 'UNIMED'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                NULL,
+                                TO_TIMESTAMP('2022-09-05 9:00','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('40942','Diego Aragão','M',36, tp_endereco('51030',242,'apto 801'), tp_telefones(tp_telefone('81994517784')), 96, 185, 7, 'MESO', 'UNIMED'), 
+                                tp_nutricionista('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '101'),
+                                tp_nt_prescreve(tp_produto('148','CAFEINA', 22, 35, 14, to_date('2022-01-30','yyyy-mm-dd'), to_date('2025-01-30','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-09-05 15:00','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('48509', 'Caroline Monteiro', 'F', 21, tp_endereco('52050', 654, 'apto 1503' ), tp_telefones(tp_telefone('81991933671')), 76, 175, 18, 'MESO', 'UNIMED'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                NULL,
+                                TO_TIMESTAMP('2022-09-05 10:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('81783', 'Júlia Pires', 'F', 25, tp_endereco('50020', 1200 ,'apto 404'), tp_telefones(tp_telefone('81981491538')), 44, 168, 17, 'ECTO', 'FISCO'), 
+                                tp_nutricionista('12513', 'Raul Nascimento', 'M', 40, tp_endereco('50010', 966,'apto 701'), to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL, '087'),
+                                NULL,
+                                TO_TIMESTAMP('2022-10-05 14:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('00182', 'Thomas Alves', 'M', 30, tp_endereco('52050', 610 ,'apto 1802'), tp_telefones(tp_telefone('81997132626')), 94, 184, 19, 'ENDO', 'AMIL'), 
+                                tp_nutricionista('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '870'),
+                                tp_nt_prescreve(tp_produto('260','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-10-05 15:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('69221', 'João Pedro Silveira', 'M', 24, tp_endereco('52050', 602, 'apto 602'), tp_telefones(tp_telefone('81996977272')), 88, 174, 22, 'ENDO', 'UNIMED'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                NULL,
+                                TO_TIMESTAMP('2022-10-06 9:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('40942','Diego Aragão','M',36, tp_endereco('51030',242,'apto 801'), tp_telefones(tp_telefone('81994517784')), 96, 185, 7, 'MESO', 'UNIMED'), 
+                                tp_nutricionista('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '101'),
+                                tp_nt_prescreve(tp_produto('148','CAFEINA', 22, 35, 14, to_date('2022-01-30','yyyy-mm-dd'), to_date('2025-01-30','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-10-12 15:30','YYYY-MM-DD HH24:MI:SS')); 
+INSERT INTO tb_consulta VALUES (tp_cliente('48509', 'Caroline Monteiro', 'F', 21, tp_endereco('52050', 654, 'apto 1503' ), tp_telefones(tp_telefone('81991933671')), 76, 175, 18, 'MESO', 'UNIMED'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                NULL,
+                                TO_TIMESTAMP('2022-10-06 10:30','YYYY-MM-DD HH24:MI:SS')); 
+
+                   
 --MARCAR CONSULTA
 
 INSERT INTO tb_MarcarConsulta VALUES (tp_cliente('32387', 'Alícia Sales', 'F', 17, tp_endereco('50020', 1216 , 'apto 102'), tp_telefones(tp_telefone('81989526545')), 58, 164, 28, 'ENDO', 'UNIMED'),
@@ -132,7 +198,34 @@ INSERT INTO tb_MarcarConsulta VALUES (tp_cliente('32387', 'Alícia Sales', 'F', 
                                       TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
 --COMPRA
 
+
 INSERT INTO tb_compra VALUES (tp_cliente('32387', 'Alícia Sales', 'F', 17, tp_endereco('50020', 1216 , 'apto 102'), tp_telefones(tp_telefone('81989526545')), 58, 164, 28, 'ENDO', 'UNIMED'),
                               tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'),
                               tp_nt_prod_compra(tp_produto('343','WHEY', 80, 100, 45,  to_date('2022-04-16','yyyy-mm-dd'), to_date('2025-04-16','yyyy-mm-dd'))),
                               TO_TIMESTAMP('2022-09-04 15:35','YYYY-MM-DD HH24:MI:SS'));
+
+                              
+INSERT INTO tb_compra VALUES (tp_cliente('81783', 'Júlia Pires', 'F', 25, tp_endereco('50020', 1200 ,'apto 404'), tp_telefones(tp_telefone('81981491538')), 44, 168, 17, 'ECTO', 'FISCO'),
+                              tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'),
+                              tp_nt_prod_compra(tp_produto('346','CAFEINA', 20, 40, 32, to_date('2021-08-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd'))),
+                              TO_TIMESTAMP('2022-09-04 15:35','YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO tb_compra VALUES (tp_cliente('39511', 'Breno da Rocha', 'M', 28, tp_endereco('50020', 1280 ,'apto 601'), tp_telefones(tp_telefone('81981263621')), 82, 177, 13, 'MESO', 'SULAMERICA'),
+                              tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'),
+                              tp_nt_prod_compra(tp_produto('344','CREATINA', 100, 125, 10, to_date('2021-08-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd'))),
+                              TO_TIMESTAMP('2022-11-04 14:05','YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO tb_compra VALUES (tp_cliente('00182', 'Thomas Alves', 'M', 30, tp_endereco('52050', 610 ,'apto 1802'), tp_telefones(tp_telefone('81997132626')), 94, 184, 19, 'ENDO', 'AMIL'),
+                              tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'),
+                              tp_nt_prod_compra(tp_produto('260','CREATINA', 75, 105, 100, to_date('2021-08-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd'))),
+                              TO_TIMESTAMP('2023-08-07 13:05','YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO tb_compra VALUES (tp_cliente('69221', 'João Pedro Silveira', 'M', 24, tp_endereco('52050', 602, 'apto 602'), tp_telefones(tp_telefone('81996977272')), 88, 174, 22, 'ENDO', 'UNIMED'),
+                              tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'),
+                              tp_nt_prod_compra(tp_produto('343','WHEY', 80, 100, 45, to_date('2022-08-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd'))),
+                              TO_TIMESTAMP('2022-08-07 13:05','YYYY-MM-DD HH24:MI:SS'));
+                              
+INSERT INTO tb_compra VALUES (tp_cliente('34581', 'Bruno Barros', 'M', 32, tp_endereco('52050', 595, 'apto 202'), tp_telefones(tp_telefone('81973388446')), 71, 173, 18, 'ENDO', 'HAPVIDA'),
+                              tp_vendedor('31819','Nathan Peixoto','M',23, tp_endereco('50020', 1200,'apto 301'),  to_date('2021-03-20','yyyy-mm-dd'), 'VEND', 6500.00, NULL, '001'),
+                              tp_nt_prod_compra(tp_produto('343','WHEY', 80, 100, 45, to_date('2022-02-07','yyyy-mm-dd'), to_date('2023-08-07','yyyy-mm-dd'))),
+                              TO_TIMESTAMP('2022-02-07 13:05','YYYY-MM-DD HH24:MI:SS'));
