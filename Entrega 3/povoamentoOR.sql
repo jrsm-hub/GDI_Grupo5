@@ -82,10 +82,10 @@ INSERT INTO tb_produto VALUES (tp_produto('145','WHEY', 75, 90, 22, to_date('202
 INSERT INTO tb_produto VALUES (tp_produto('146','CREATINA', 80, 100, 17, to_date('2021-06-07','yyyy-mm-dd'), to_date('2024-06-07','yyyy-mm-dd')));
 INSERT INTO tb_produto VALUES (tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd')));
 INSERT INTO tb_produto VALUES (tp_produto('148','CAFEINA', 22, 35, 14, to_date('2022-01-30','yyyy-mm-dd'), to_date('2025-01-30','yyyy-mm-dd')));
-INSERT INTO tb_produto VALUES (tp_produto('259','WHEY','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd')));
-INSERT INTO tb_produto VALUES (tp_produto('260','WHEY','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd')));
-INSERT INTO tb_produto VALUES (tp_produto('261','WHEY','ALBUMINA', 55, 70, 50, to_date('2022-01-22','yyyy-mm-dd'), to_date('2024-01-22','yyyy-mm-dd')));
-INSERT INTO tb_produto VALUES (tp_produto('262','WHEY','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('259','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('260','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('261','ALBUMINA', 55, 70, 50, to_date('2022-01-22','yyyy-mm-dd'), to_date('2024-01-22','yyyy-mm-dd')));
+INSERT INTO tb_produto VALUES (tp_produto('262','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd')));
 
 --FABRICANTE
 
@@ -101,10 +101,10 @@ INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('145','WHEY', 75
 INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('146','CREATINA', 80, 100, 17, to_date('2021-06-07','yyyy-mm-dd'), to_date('2024-06-07','yyyy-mm-dd'))));
 INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd'))));
 INSERT INTO tb_fabricante VALUES ('14548','GROWTH', (tp_produto('148','CAFEINA', 22, 35, 14, to_date('2022-01-30','yyyy-mm-dd'), to_date('2025-01-30','yyyy-mm-dd'))));
-INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('259','WHEY','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd'))));
-INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('260','WHEY','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd')))); 
-INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('261','WHEY','ALBUMINA', 55, 70, 50, to_date('2022-01-22','yyyy-mm-dd'), to_date('2024-01-22','yyyy-mm-dd')))); 
-INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('262','WHEY','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd')))); 
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('259','WHEY', 99, 125, 12, to_date('2022-03-17','yyyy-mm-dd'), to_date('2025-03-17','yyyy-mm-dd'))));
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('260','CREATINA', 75, 105, 100, to_date('2021-06-17','yyyy-mm-dd'), to_date('2024-06-17','yyyy-mm-dd')))); 
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('261','ALBUMINA', 55, 70, 50, to_date('2022-01-22','yyyy-mm-dd'), to_date('2024-01-22','yyyy-mm-dd')))); 
+INSERT INTO tb_fabricante VALUES ('25975','PROBIOTICA',(tp_produto('262','CAFEINA', 15, 30, 65, to_date('2022-08-30','yyyy-mm-dd'), to_date('2025-08-30','yyyy-mm-dd')))); 
 
 --CONSULTA
 
@@ -112,6 +112,18 @@ INSERT INTO tb_consulta VALUES (tp_cliente('32387', 'Alícia Sales', 'F', 17, tp
                                 tp_nutricionista('12513', 'Raul Nascimento', 'M', 40, tp_endereco('50010', 966,'apto 701'), to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL, '087'),
                                 tp_nt_prescreve(tp_produto('343','WHEY', 80, 100, 45,  to_date('2022-04-16','yyyy-mm-dd'), to_date('2025-04-16','yyyy-mm-dd'))),
                                 TO_TIMESTAMP('2022-09-04 14:30:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_consulta VALUES (tp_cliente('39511', 'Breno da Rocha', 'M', 28, tp_endereco('50020', 1280 ,'apto 601'), tp_telefones(tp_telefone('81981263621')), 82, 177, 13, 'MESO', 'SULAMERICA'), 
+                                tp_nutricionista('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '870'),
+                                tp_nt_prescreve(tp_produto('786','CREATINA', 105, 130, 00, to_date('2020-09-30','yyyy-mm-dd'), to_date('2022-09-30','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-09-04 15:30','YYYY-MM-DD HH24:MI:SS'));                              
+INSERT INTO tb_consulta VALUES (tp_cliente('68703', 'Diego Silveira', 'M', 19, tp_endereco('52050', 606,'apto 2701'), tp_telefones(tp_telefone('81985930886')), 64, 182, 14, 'ECTO', 'HAPVIDA'), 
+                                tp_nutricionista('57605','Leonardo Moraes','M',22, tp_endereco('26150',135,'apto 1301'), to_date('2022-01-22','yyyy-mm-dd'), 'NUTRI', 6400.03, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '404'),
+                                tp_nt_prescreve(tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));                               
+INSERT INTO tb_consulta VALUES (tp_cliente('93818','Agatha Lima','F',24,tp_endereco('52030',450,'apto 101'), tp_telefones(tp_telefone('81970449495')), 60, 155, 24, 'ECTO', 'UNIMED'), 
+                                tp_nutricionista('13418','Ana Luiza Porto','F',29,tp_endereco('26147',123,'apto 603'), to_date('2022-04-17','yyyy-mm-dd'), 'NUTRI', 6500.00, (SELECT REF(N) FROM tb_nutricionista N WHERE cpf = '12513'), '101'),
+                                tp_nt_prescreve(tp_produto('147','ALBUMINA', 50, 65, 71, to_date('2022-06-13','yyyy-mm-dd'), to_date('2024-04-17','yyyy-mm-dd'))),
+                                TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));  
 --MARCAR CONSULTA
 
 INSERT INTO tb_MarcarConsulta VALUES (tp_cliente('32387', 'Alícia Sales', 'F', 17, tp_endereco('50020', 1216 , 'apto 102'), tp_telefones(tp_telefone('81989526545')), 58, 164, 28, 'ENDO', 'UNIMED'),
