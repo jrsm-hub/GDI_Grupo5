@@ -253,6 +253,8 @@ CREATE OR REPLACE TYPE tp_compra AS OBJECT(
 
 );
 
+/
+
 /*
 
 CHECKLIST
