@@ -1,13 +1,13 @@
 -- TABELA PESSOA
-
+/*
 CREATE TABLE tb_pessoa OF tp_pessoa(
     cpf PRIMARY KEY,
     nome NOT NULL,
     sexo NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
     idade  NOT NULL,
-    endereco tp_endereco NOT NULL,
+    endereco NOT NULL
 
-);
+);*/
 
 
 -- TABELA CLIENTE
@@ -16,12 +16,12 @@ CREATE TABLE tb_cliente OF tp_cliente(
     nome NOT NULL,
     sexo NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
     idade NOT NULL,
-    endereco tp_endereco NOT NULL,
-    telefones tp_telefones NOT NULL,
+    endereco NOT NULL,
+    telefones NOT NULL,
     peso NOT NULL,
     altura NOT NULL,
     percentual_gordura NOT NULL,
-    biotipo ,
+    biotipo NOT NULL,
     plano_saude NOT NULL
 );
 
@@ -101,36 +101,34 @@ CREATE TABLE tb_produto OF tp_produto(
 
 -- TABELA FABRICANTE
 
-CREATE TABLE tb_fabricante OF tp_fabricante
+CREATE TABLE tb_fabricante OF tp_fabricante(
+    cnpj PRIMARY KEY,
+    nome_fabri NOT NULL
+)
 NESTED TABLE prod_fornecido STORE AS tb_prod_fornecido;
 
 -- TABELA CONSULTA
 
-CREATE TABLE tb_consulta(
-    cliente_consulta tp_cliente NOT NULL,
-    nutricionista_consulta tp_nutricionista NOT NULL,
-    prod_prescritos tp_nt_prescreve,
-    data_hora_consulta TIMESTAMP
+CREATE TABLE tb_consulta OF tp_consulta(
+    cliente_consulta WITH ROWID REFERENCES tb_cliente NOT NULL,
+    nutricionista_consulta WITH ROWID REFERENCES tb_nutricionista NOT NULL
 )
 NESTED TABLE prod_prescritos STORE AS tb_prod_prescritos;
 
 -- TABELA MARCAR CONSULTA
 
-CREATE TABLE tb_MarcarConsulta(
-    cliente_MarcarConsulta tp_cliente,
-    atendente_MarcarConsulta tp_atendente,
-    nutricionista_MarcarConsulta tp_nutricionista,
-    data_hora_marcada TIMESTAMP
+CREATE TABLE tb_MarcarConsulta OF tp_MarcarConsulta(
+    cliente_MarcarConsulta WITH ROWID REFERENCES tb_cliente NOT NULL,
+    atendente_MarcarConsulta WITH ROWID REFERENCES tb_atendente NOT NULL,
+    nutricionista_MarcarConsulta WITH ROWID REFERENCES tb_nutricionista NOT NULL,
+    data_hora_marcada NOT NULL
 );
 
 -- TABELA COMPRA
 
-CREATE TABLE tb_compra(
-    cliente_compra tp_cliente,
-    vendedor_compra tp_vendedor,
-    prod_comprados tp_nt_prod_compra,
-    data_hora_compra TIMESTAMP
+CREATE TABLE tb_compra OF tp_compra(
+    cliente_compra WITH ROWID REFERENCES tb_cliente NOT NULL,
+    vendedor_compra WITH ROWID REFERENCES tb_vendedor NOT NULL,
+    data_hora_compra NOT NULL
 )
 NESTED TABLE prod_comprados STORE AS tb_prod_comprados;
-
---- PODE SER QUE QUANDO FOR POVOAR SURJAM ALGUNS PROBLEMAS POR CONTA DO REF

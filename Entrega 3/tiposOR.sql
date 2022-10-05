@@ -82,6 +82,7 @@ BEGIN
     plano_saude := x1.plano_saude;  
     RETURN;
 END;
+END;
 
 /
 --FUNCIONARIO
@@ -222,10 +223,10 @@ CREATE OR REPLACE TYPE tp_nt_prescreve AS TABLE OF tp_produto;
 /
 
 CREATE OR REPLACE TYPE tp_consulta AS OBJECT(
-    cliente REF tp_cliente,
-    nutricionista REF tp_nutricionista,
+    cliente_consulta REF tp_cliente,
+    nutricionista_consulta REF tp_nutricionista,
     prod_prescritos tp_nt_prescreve,
-    data_hora_consulta 
+    data_hora_consulta TIMESTAMP
 
 );
 /
@@ -234,9 +235,9 @@ CREATE OR REPLACE TYPE tp_consulta AS OBJECT(
 
 --MARCAR CONSULTA
 CREATE OR REPLACE TYPE tp_MarcarConsulta AS OBJECT(
-    cliente REF tp_cliente,
-    atendente REF tp_atendente,
-    nutricionista REF tp_nutricionista,
+    cliente_MarcarConsulta REF tp_cliente,
+    atendente_MarcarConsulta REF tp_atendente,
+    nutricionista_MarcarConsulta REF tp_nutricionista,
     data_hora_marcada TIMESTAMP
 );
 
@@ -249,15 +250,15 @@ CREATE OR REPLACE TYPE tp_nt_prod_compra AS TABLE OF tp_produto;
 /
 
 CREATE OR REPLACE TYPE tp_compra AS OBJECT(
-    cliente REF tp_cliente,
-    vendedor REF tp_vendedor,
+    cliente_compra REF tp_cliente,
+    vendedor_compra REF tp_vendedor,
     prod_comprados tp_nt_prod_compra,
     data_hora_compra TIMESTAMP
 
 );
 
 --------------------------
-DECLARE
+/*DECLARE
 produto tp_produto;
 i number;
 
@@ -291,7 +292,7 @@ str := fab.fabricanteToStr;
 DBMS_OUTPUT.PUT_LINE(str);
 
 end;
-
+/*
 ----------------------
 /*
 
