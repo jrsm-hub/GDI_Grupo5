@@ -110,9 +110,7 @@ CREATE TABLE tb_produto OF tp_produto(
 CREATE TABLE tb_fabricante(
     cnpj VARCHAR2(255),
     nome_fabri VARCHAR2 (255) NOT NULL,
-    prod_fornecido tp_nt_fornece,
-
-    CONSTRAINT fabricante_pkey PRIMARY KEY (cnpj)
+    prod_fornecido tp_nt_fornece
 )
 
 NESTED TABLE prod_fornecido STORE AS tb_prod_fornecido;
