@@ -257,56 +257,19 @@ CREATE OR REPLACE TYPE tp_compra AS OBJECT(
 
 );
 
---------------------------
-/*DECLARE
-produto tp_produto;
-i number;
-
-BEGIN
-
-SELECT VALUE(p) INTO produto FROM tb_produto p
-WHERE p.codigo_prod = '343';
-
-SELECT P.comparaEstoque(produto) into i FROM tb_produto p WHERE p.codigo_prod = '344';
-
-IF i > 0 THEN DBMS_OUTPUT.PUT_LINE('PRODUTO DE ID '
-||'344' || ' TEM ESTOQUE MAIOR QUE O DO PRODUTO DE ID '
-||TO_CHAR(produto.codigo_prod) ); END IF;
-IF i = 0 THEN DBMS_OUTPUT.PUT_LINE('PRODUTO DE ID '
-||'344' || ' TEM ESTOQUE IGUAL AO DO PRODUTO DE ID '
-||TO_CHAR(produto.codigo_prod) ); END IF;
-IF i < 0 THEN DBMS_OUTPUT.PUT_LINE('PRODUTO DE ID '
-||'344' || ' TEM ESTOQUE MENOR QUE O DO PRODUTO DE ID '
-||TO_CHAR(produto.codigo_prod) );END IF;
-
-END;
-
-----------------------
-
-declare
-fab tp_fabricante;
-str varchar2(1000);
-begin 
-select value(p) into fab from tb_fabricante p where p.cnpj = '34346'; 
-str := fab.fabricanteToStr;
-DBMS_OUTPUT.PUT_LINE(str);
-
-end;
-/*
-----------------------
 /*
 
-CHECKLIST (QUANDO FOR BOTAR NO LIVE SQL PRECISA TIRAR ESSA SESSAO DE COMENTARIO)
+CHECKLIST (QUANDO FOR BOTAR NO LIVE SQL PRECISA TIRAR ESSA SESSAO DE COMENTARIO SENAO O LIVESQL CRASHA)
 
 1. CREATE OR REPLACE TYPE ✔️
 2. CREATE OR REPLACE TYPE BODY ✔️
 3. MEMBER PROCEDURE ✔️ -- exibe_detalhes(testado)
 4. MEMBER FUNCTION✔️ -- calcula_imc(testado)
 5. ORDER MEMBER FUNCTION ✔️ -- comparaEstoque(testado) 
-6. MAP MEMBER FUNCTION ✔️ -- fabricanteToStr -- falta testar
-7. CONSTRUCTOR FUNCTION ✔️ -- cliente (falta testar)
+6. MAP MEMBER FUNCTION ✔️ -- fabricanteToStr -- testado
+7. CONSTRUCTOR FUNCTION ✔️
 8. OVERRIDING MEMBER ✔️ -- exibe_detalhes (testado)
-9. FINAL MEMBER ✔️ -- fabricanteToStr
+9. FINAL MEMBER ✔️ -- fabricanteToStr -- testado
 10. NOT INSTANTIABLE TYPE/MEMBER ✔️ -- tp_pessoa
 11. HERANCA DE TIPOS (UNDER/NOT FINAL) ✔️
 12. ALTER TYPE ✔️ -- tp_funcionario (ADD gerente)
