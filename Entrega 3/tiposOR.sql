@@ -43,7 +43,7 @@ CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 
     MEMBER PROCEDURE exibe_detalhes,
     MEMBER FUNCTION calcula_imc RETURN NUMBER,
-    CONSTRUCTOR FUNCTION tp_cliente (x1 tp_pessoa) RETURN SELF AS RESULT
+    CONSTRUCTOR FUNCTION tp_cliente (x1 tp_cliente) RETURN SELF AS RESULT
 );
 
 /
@@ -54,9 +54,9 @@ MEMBER PROCEDURE exibe_detalhes IS
 
 BEGIN
 DBMS_OUTPUT.PUT_LINE('INFORMAÇÕES DO CLIENTE: ');
-DBMS_OUTPUT.PUT_LINE('PESO: ' || peso);
-DBMS_OUTPUT.PUT_LINE('ALTURA: '|| altura);
-DBMS_OUTPUT.PUT_LINE('PERCENTUAL GORDURA: ' || percentual_gordura);
+DBMS_OUTPUT.PUT_LINE('PESO: ' || to_char(peso));
+DBMS_OUTPUT.PUT_LINE('ALTURA: '|| to_char(altura));
+DBMS_OUTPUT.PUT_LINE('PERCENTUAL GORDURA: ' || to_char(percentual_gordura));
 DBMS_OUTPUT.PUT_LINE('BIOTIPO: ' ||  biotipo);
 DBMS_OUTPUT.PUT_LINE('PLANO DE SAÚDE: ' ||  plano_saude);
 END;
@@ -64,7 +64,7 @@ END;
 MEMBER FUNCTION calcula_imc RETURN NUMBER IS
 
 BEGIN 
-RETURN peso/(altura**2);
+RETURN peso/((altura/100)**2);
 END;
 
 CONSTRUCTOR FUNCTION tp_cliente(x1 tp_cliente) RETURN SELF AS RESULT IS
@@ -105,9 +105,10 @@ MEMBER PROCEDURE exibe_detalhes IS
 
 BEGIN
 DBMS_OUTPUT.PUT_LINE('INFORMAÇÕES DO FUNCIONARIO: ');
-DBMS_OUTPUT.PUT_LINE('DATA DE ADMISSÃO: ' || data_admissao);
+DBMS_OUTPUT.PUT_LINE('DATA DE ADMISSÃO: ' || to_char(data_admissao));
 DBMS_OUTPUT.PUT_LINE('CARGO: '|| cargo);
-DBMS_OUTPUT.PUT_LINE('SALÁRIO: R$ ' || salario);
+DBMS_OUTPUT.PUT_LINE('SALÁRIO: R$ ' || to_char(salario));
+END;
 END;
 
 
@@ -124,13 +125,15 @@ CREATE OR REPLACE TYPE tp_nutricionista UNDER tp_funcionario(
 
 CREATE OR REPLACE TYPE BODY tp_nutricionista AS
 
-MEMBER PROCEDURE exibe_detalhes IS
+OVERRIDING MEMBER PROCEDURE exibe_detalhes IS
 
 BEGIN
 DBMS_OUTPUT.PUT_LINE('INFORMAÇÕES DO NUTRICIONISTA: ');
-DBMS_OUTPUT.PUT_LINE('CRN: ' || crn);
-DBMS_OUTPUT.PUT_LINE('DATA DE ADMISSÃO: ' || data_admissao);
-DBMS_OUTPUT.PUT_LINE('SALÁRIO: R$ ' || salario);
+DBMS_OUTPUT.PUT_LINE('CRN: ' || to_char(crn));
+DBMS_OUTPUT.PUT_LINE('DATA DE ADMISSÃO: ' || to_char(data_admissao));
+DBMS_OUTPUT.PUT_LINE('SALÁRIO: R$ ' || to_char(salario));
+END;
+
 END;
 
 /
@@ -172,7 +175,7 @@ CREATE OR REPLACE TYPE tp_produto AS OBJECT(
 
 CREATE OR REPLACE TYPE BODY tp_produto AS 
 
-ORDER MEMBER FUNCTION comparaEstoque (X tp_produto) RETURN INTEGER IS
+ORDER MEMBER FUNCTION comparaEstoque(X tp_produto) RETURN NUMBER IS
 
     BEGIN
     RETURN SELF.estoque - X.estoque;
@@ -222,9 +225,9 @@ CREATE OR REPLACE TYPE tp_consulta AS OBJECT(
     cliente REF tp_cliente,
     nutricionista REF tp_nutricionista,
     prod_prescritos tp_nt_prescreve,
-    data_hora_consulta TIMESTAMP
-);
+    data_hora_consulta 
 
+);
 /
 
 -- RELACIONAMENTOS TRIPLOS
@@ -253,20 +256,55 @@ CREATE OR REPLACE TYPE tp_compra AS OBJECT(
 
 );
 
-/
+--------------------------
+DECLARE
+produto tp_produto;
+i number;
 
+BEGIN
+
+SELECT VALUE(p) INTO produto FROM tb_produto p
+WHERE p.codigo_prod = '343';
+
+SELECT P.comparaEstoque(produto) into i FROM tb_produto p WHERE p.codigo_prod = '344';
+
+IF i > 0 THEN DBMS_OUTPUT.PUT_LINE('PRODUTO DE ID '
+||'344' || ' TEM ESTOQUE MAIOR QUE O DO PRODUTO DE ID '
+||TO_CHAR(produto.codigo_prod) ); END IF;
+IF i = 0 THEN DBMS_OUTPUT.PUT_LINE('PRODUTO DE ID '
+||'344' || ' TEM ESTOQUE IGUAL AO DO PRODUTO DE ID '
+||TO_CHAR(produto.codigo_prod) ); END IF;
+IF i < 0 THEN DBMS_OUTPUT.PUT_LINE('PRODUTO DE ID '
+||'344' || ' TEM ESTOQUE MENOR QUE O DO PRODUTO DE ID '
+||TO_CHAR(produto.codigo_prod) );END IF;
+
+END;
+
+----------------------
+
+declare
+fab tp_fabricante;
+str varchar2(1000);
+begin 
+select value(p) into fab from tb_fabricante p where p.cnpj = '34346'; 
+str := fab.fabricanteToStr;
+DBMS_OUTPUT.PUT_LINE(str);
+
+end;
+
+----------------------
 /*
 
-CHECKLIST
+CHECKLIST (QUANDO FOR BOTAR NO LIVE SQL PRECISA TIRAR ESSA SESSAO DE COMENTARIO)
 
 1. CREATE OR REPLACE TYPE ✔️
 2. CREATE OR REPLACE TYPE BODY ✔️
-3. MEMBER PROCEDURE ✔️ -- exibe_detalhes(falta testar)
-4. MEMBER FUNCTION✔️ -- calcula_imc(falta testar)
-5. ORDER MEMBER FUNCTION ✔️ -- comparaEstoque(falta testar) 
+3. MEMBER PROCEDURE ✔️ -- exibe_detalhes(testado)
+4. MEMBER FUNCTION✔️ -- calcula_imc(testado)
+5. ORDER MEMBER FUNCTION ✔️ -- comparaEstoque(testado) 
 6. MAP MEMBER FUNCTION ✔️ -- fabricanteToStr -- falta testar
 7. CONSTRUCTOR FUNCTION ✔️ -- cliente (falta testar)
-8. OVERRIDING MEMBER ✔️ -- exibe_detalhes (tp_nutricionista)
+8. OVERRIDING MEMBER ✔️ -- exibe_detalhes (testado)
 9. FINAL MEMBER ✔️ -- fabricanteToStr
 10. NOT INSTANTIABLE TYPE/MEMBER ✔️ -- tp_pessoa
 11. HERANCA DE TIPOS (UNDER/NOT FINAL) ✔️
@@ -275,8 +313,8 @@ CHECKLIST
 14. WITH ROWID REFERENCES✔️
 15. REF ✔️
 16. SCOPE IS ✔️
-17. INSERT INTO
-18. VALUE
+17. INSERT INTO ✔️
+18. VALUE ✔️ (O VALUE FOI USADO PARA TESTAR OS CODIGOS): SELECT VALUE (C) INTO CLIENTE FROM tb_cliente C WHERE C.cpf = "39511" Por exemplo
 19. VARRAY ✔️
 20. NESTED TABLE ✔️
 

@@ -1,34 +1,28 @@
 -- TABELA PESSOA
 
-CREATE TABLE tb_pessoa(
-    cpf_p VARCHAR2 (5),
-    nome VARCHAR2 (255) NOT NULL,
-    sexo CHAR,
-    idade NUMBER NOT NULL,
+CREATE TABLE tb_pessoa OF tp_pessoa(
+    cpf PRIMARY KEY,
+    nome NOT NULL,
+    sexo NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
+    idade  NOT NULL,
     endereco tp_endereco NOT NULL,
-    
-    CONSTRAINT pessoa_pkey PRIMARY KEY (cpf_p)
+
 );
 
 
 -- TABELA CLIENTE
-CREATE TABLE tb_cliente(
-    cpf VARCHAR2 (5),
-    nome VARCHAR2 (255) NOT NULL,
-    sexo CHAR,
-    idade NUMBER NOT NULL,
+CREATE TABLE tb_cliente OF tp_cliente(
+    cpf PRIMARY KEY,
+    nome NOT NULL,
+    sexo NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
+    idade NOT NULL,
     endereco tp_endereco NOT NULL,
     telefones tp_telefones NOT NULL,
-    peso NUMBER NOT NULL,
-    altura NUMBER NOT NULL,
-    percentual_gordura NUMBER NOT NULL,
-    biotipo VARCHAR2(4),
-    plano_saude VARCHAR2(255) NOT NULL,
-
-
-    CONSTRAINT cliente_pkey PRIMARY KEY (cpf),
-    CONSTRAINT cliente_checkGenero CHECK (sexo = 'M' OR sexo = 'F')
-    
+    peso NOT NULL,
+    altura NOT NULL,
+    percentual_gordura NOT NULL,
+    biotipo ,
+    plano_saude NOT NULL
 );
 
 
@@ -107,12 +101,7 @@ CREATE TABLE tb_produto OF tp_produto(
 
 -- TABELA FABRICANTE
 
-CREATE TABLE tb_fabricante(
-    cnpj VARCHAR2(255),
-    nome_fabri VARCHAR2 (255) NOT NULL,
-    prod_fornecido tp_nt_fornece
-)
-
+CREATE TABLE tb_fabricante OF tp_fabricante
 NESTED TABLE prod_fornecido STORE AS tb_prod_fornecido;
 
 -- TABELA CONSULTA
