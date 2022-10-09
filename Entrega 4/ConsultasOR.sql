@@ -73,3 +73,20 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE( 'O produto ' || prod.nome_p || ' da empresa ' || empresa || ' ainda tem um lucro potencial de R$ ' || lucro_potencial);
         END LOOP;
 END;
+
+
+--Retorna nome, cpf e salario dos vendedores que recebem mais de 2000
+SELECT v.nome, v.cpf, v.salario FROM tb_vendedor v WHERE v.salario > 2000.00 ORDER BY v.salario;
+--Retorna nome, cpf e salario dos nutricionistas que recebem mais de 6400
+SELECT N.nome, N.cpf, N.salario FROM tb_nutricionista N WHERE N.salario > 6400.00 ORDER BY N.salario;
+--Retorna nome e cpf dos vendedores que tem menos de 30 anos 
+SELECT v.nome, v.cpf FROM tb_vendedor v WHERE v.idade < 30;
+-- Retorna o nome do cliente e o nome do nutricionista em que a consulta foi marcada pelo atendente Pedro Henrique Pires para o mês de agosto
+SELECT DEREF(A.cliente_MarcarConsulta).nome AS Cliente, DEREF(A.nutricionista_MarcarConsulta).nome AS Nutricionista FROM tb_MarcarConsulta A WHERE TO_CHAR(A.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-08-__%' AND DEREF(A.atendente_MarcarConsulta).nome = 'Pedro Henrique Pires' ORDER BY DEREF(A.cliente_MarcarConsulta).nome;
+--Retorna o nome do cliente e o cpf do mesmo que comprou algum produto com o vendedor Nathan Peixoto 
+SELECT DEREF(A.cliente_compra).nome AS Cliente, DEREF(A.cliente_compra).cpf AS CPF FROM tb_compra A WHERE DEREF(A.vendedor_compra).nome = 'Nathan Peixoto' ORDER BY DEREF(A.cliente_compra).nome;
+--Retorna o nome do cliente o sexo e a idade do mesmo para aqueles que se consultaram com Leonardo Moraes para o mês de setembro
+SELECT DEREF(A.cliente_consulta).nome AS Cliente, DEREF(A.cliente_consulta).sexo AS Sexo, DEREF(A.cliente_consulta).idade AS Idade FROM tb_consulta A WHERE TO_CHAR(A.data_hora_consulta,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-09-__%' AND DEREF(A.nutricionista_consulta).nome = 'Leonardo Moraes' ORDER BY DEREF(A.cliente_consulta).nome;
+--Retorna o nome do cliente e a hora que foi marcada a sua consulta para o mês de agosto
+SELECT DEREF(M.cliente_MarcarConsulta).nome AS Cliente, data_hora_marcada FROM tb_MarcarConsulta M WHERE TO_CHAR(M.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-08-__%' ORDER BY DEREF(M.cliente_MarcarConsulta).nome;
+
