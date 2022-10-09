@@ -16,7 +16,7 @@ CREATE OR REPLACE TYPE tp_telefone AS OBJECT (
 
 /
 
-CREATE OR REPLACE TYPE tp_telefones AS VARRAY(2) OF tp_telefone;
+CREATE OR REPLACE TYPE tp_telefones AS VARRAY(3) OF tp_telefone;
 
 /
 
