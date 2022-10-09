@@ -73,3 +73,29 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE( 'O produto ' || prod.nome_p || ' da empresa ' || empresa || ' ainda tem um lucro potencial de R$ ' || lucro_potencial);
         END LOOP;
 END;
+
+-- PRODUTOS 
+
+SELECT * FROM tb_produto P WHERE P.estoque > 50 ORDER BY valor_revenda ASC;
+
+SELECT * FROM tb_produto P WHERE  P.estoque < 50  ORDER BY valor_revenda DESC;
+
+
+SELECT SUM(P.estoque) AS ESTOQUE_CREATINA FROM tb_produto P WHERE P.valor_revenda > 100 and P.nome_p = 'CREATINA';
+
+SELECT SUM(P.estoque) AS ESTOQUE_WHEY FROM tb_produto P WHERE P.valor_revenda <= 100 and P.nome_p = 'WHEY';
+
+SELECT P.nome_p, COUNT(P.codigo_prod) AS QTD_MARCAS FROM tb_produto P  GROUP BY P.nome_p HAVING COUNT(P.codigo_prod) = 4;
+
+
+-- COMPRA 
+
+SELECT DEREF(C.vendedor_compra).nome  AS NOME, COUNT(C.vendedor_compra) AS QTD_VENDAS FROM tb_compra C GROUP BY DEREF(C.vendedor_compra).nome ORDER BY DEREF(C.vendedor_compra).nome DESC;
+
+
+SELECT DEREF(C.cliente_compra).nome  AS NOME, COUNT(C.cliente_compra) AS QTD_COMPRA FROM tb_compra C GROUP BY DEREF(C.cliente_compra).nome ORDER BY DEREF(C.cliente_compra).nome DESC; 
+
+
+SELECT DEREF(C.cliente_compra).nome AS Nome_Cliente, COUNT(*)  AS QTD_Comprada FROM tb_compra C, TABLE(C.prod_comprados) P GROUP BY DEREF(C.cliente_compra).nome;
+
+SELECT DEREF(C.cliente_compra).nome AS Nome_Cliente, P.nome_p FROM tb_compra C, TABLE(C.prod_comprados) P WHERE P.nome_p = 'WHEY';
