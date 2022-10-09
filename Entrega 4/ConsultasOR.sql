@@ -43,13 +43,11 @@ SELECT N.sexo, COUNT(N.sexo) FROM tb_nutricionista N GROUP BY N.sexo;
 -- CONSULTAS FABRICANTE
 
 SELECT P.* FROM tb_fabricante F, TABLE(F.prod_fornecido) P WHERE F.nome_fabri = 'MAX';
-
 SELECT F.nome_fabri, Count(*) FROM tb_fabricante F, TABLE(F.prod_fornecido) P GROUP BY F.nome_fabri;
 
 DECLARE
 valor_lucro number;
 BEGIN
-   
     FOR prod in (SELECT P.* FROM tb_fabricante F, TABLE(F.prod_fornecido) P WHERE F.nome_fabri = 'INTEGRAL')
         LOOP
         valor_lucro := prod.valor_revenda - prod.valor_compra;
@@ -58,11 +56,8 @@ BEGIN
 END;
 
 SELECT F.nome_fabri, P.nome_p, P.estoque FROM tb_fabricante F, TABLE(F.prod_fornecido) P WHERE TO_CHAR(P.data_vencimento,'yyyy-mm-dd') LIKE '2022%';
-
 SELECT F.cnpj, F.nome_fabri, P.nome_p, P.estoque FROM tb_fabricante F, TABLE(F.prod_fornecido) P WHERE TO_CHAR(P.data_vencimento,'yyyy') > '2024' ORDER BY P.estoque;
-
 SELECT F.cnpj, F.nome_fabri, P.nome_p, P.estoque FROM tb_fabricante F, TABLE(F.prod_fornecido) P WHERE TO_CHAR(P.data_vencimento,'yyyy') > '2024' ORDER BY F.fabricanteToStr();
-
 SELECT F.nome_fabri, P.nome_p FROM tb_fabricante F, TABLE(F.prod_fornecido) P WHERE P.estoque = 0;
 
 DECLARE
@@ -82,3 +77,41 @@ BEGIN
 END;
 
 --CONSULTAS CONSULTA
+
+--Retorna nome, cpf e salario dos vendedores que recebem mais de 2000
+SELECT v.nome, v.cpf, v.salario FROM tb_vendedor v WHERE v.salario > 2000.00 ORDER BY v.salario;
+--Retorna nome e cpf dos vendedores que tem menos de 30 anos 
+SELECT v.nome, v.cpf FROM tb_vendedor v WHERE v.idade < 30;
+-- Retorna o nome do cliente e o nome do nutricionista em que a consulta foi marcada pelo atendente Pedro Henrique Pires para o mês de agosto
+SELECT DEREF(A.cliente_MarcarConsulta).nome AS Cliente, DEREF(A.nutricionista_MarcarConsulta).nome AS Nutricionista FROM tb_MarcarConsulta A WHERE TO_CHAR(A.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-08-__%' AND DEREF(A.atendente_MarcarConsulta).nome = 'Pedro Henrique Pires' ORDER BY DEREF(A.cliente_MarcarConsulta).nome;
+--Retorna o nome do cliente e o cpf do mesmo que comprou algum produto com o vendedor Nathan Peixoto 
+SELECT DEREF(A.cliente_compra).nome AS Cliente, DEREF(A.cliente_compra).cpf AS CPF FROM tb_compra A WHERE DEREF(A.vendedor_compra).nome = 'Nathan Peixoto' ORDER BY DEREF(A.cliente_compra).nome;
+--Retorna o nome do cliente o sexo e a idade do mesmo para aqueles que se consultaram com Leonardo Moraes para o mês de setembro
+SELECT DEREF(A.cliente_consulta).nome AS Cliente, DEREF(A.cliente_consulta).sexo AS Sexo, DEREF(A.cliente_consulta).idade AS Idade FROM tb_consulta A WHERE TO_CHAR(A.data_hora_consulta,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-09-__%' AND DEREF(A.nutricionista_consulta).nome = 'Leonardo Moraes' ORDER BY DEREF(A.cliente_consulta).nome;
+--Retorna o nome do cliente e a hora que foi marcada a sua consulta para o mês de agosto
+SELECT DEREF(M.cliente_MarcarConsulta).nome AS Cliente, data_hora_marcada FROM tb_MarcarConsulta M WHERE TO_CHAR(M.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-08-__%' ORDER BY DEREF(M.cliente_MarcarConsulta).nome;
+
+-- PRODUTO 
+
+SELECT * FROM tb_produto P WHERE P.estoque > 50 ORDER BY valor_revenda ASC;
+
+SELECT * FROM tb_produto P WHERE  P.estoque < 50  ORDER BY valor_revenda DESC;
+
+
+SELECT SUM(P.estoque) AS ESTOQUE_CREATINA FROM tb_produto P WHERE P.valor_revenda > 100 and P.nome_p = 'CREATINA';
+
+SELECT SUM(P.estoque) AS ESTOQUE_WHEY FROM tb_produto P WHERE P.valor_revenda <= 100 and P.nome_p = 'WHEY';
+
+SELECT P.nome_p, COUNT(P.codigo_prod) AS QTD_MARCAS FROM tb_produto P  GROUP BY P.nome_p HAVING COUNT(P.codigo_prod) = 4;
+
+
+-- COMPRA 
+SELECT DEREF(C.vendedor_compra).nome  AS NOME, COUNT(C.vendedor_compra) AS QTD_VENDAS FROM tb_compra C GROUP BY DEREF(C.vendedor_compra).nome ORDER BY DEREF(C.vendedor_compra).nome DESC;
+
+
+SELECT DEREF(C.cliente_compra).nome  AS NOME, COUNT(C.cliente_compra) AS QTD_COMPRA FROM tb_compra C GROUP BY DEREF(C.cliente_compra).nome ORDER BY DEREF(C.cliente_compra).nome DESC ;
+
+
+SELECT DEREF(C.cliente_compra).nome AS Nome_Cliente, COUNT(*)  AS QTD_Comprada FROM tb_compra C, TABLE(C.prod_comprados) P GROUP BY DEREF(C.cliente_compra).nome;
+
+SELECT DEREF(C.cliente_compra).nome AS Nome_Cliente, P.nome_p FROM tb_compra C, TABLE(C.prod_comprados) P WHERE P.nome_p = 'WHEY';

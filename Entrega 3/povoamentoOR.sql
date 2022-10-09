@@ -16,7 +16,6 @@ INSERT INTO tb_cliente VALUES ('89670','Maria Cecília Pereira','F',28, tp_ender
 INSERT INTO tb_cliente VALUES ('73416','Luiz Fernando Pires','M',16, tp_endereco('51010',1462,'apto 902'), tp_telefones(tp_telefone('81988686426'), tp_telefone('81985470326')), 58, 164, 28, 'ECTO', 'SULAMERICA');
 INSERT INTO tb_cliente VALUES ('32966','Cecília Santos','F',23, tp_endereco('50020',1462,'apto 1101'), tp_telefones(tp_telefone('81995405235'),tp_telefone('81985514271')), 74, 162, 32, 'ENDO', 'HAPVIDA');
 
-
 --FUNCIONARIO ♥
 INSERT INTO tb_funcionario VALUES (tp_funcionario('12513','Raul Nascimento','M',40,tp_endereco('50010',966,'apto 701'),to_date('2021-04-17','yyyy-mm-dd'), 'NUTRI', 10000.00, NULL)); 
 INSERT INTO tb_funcionario VALUES (tp_funcionario('13331','Arthur Pereira','M',27, tp_endereco('26145',98,'apto 504'), to_date('2022-01-22', 'yyyy-mm-dd'), 'NUTRI', 6400.00, (SELECT REF(F) FROM tb_funcionario F WHERE cpf = '12513')));
