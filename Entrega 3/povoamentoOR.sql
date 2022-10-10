@@ -41,8 +41,8 @@ INSERT INTO tb_vendedor VALUES (tp_vendedor('31819','Nathan Peixoto','M',23, tp_
 INSERT INTO tb_vendedor VALUES (tp_vendedor('42619','Benício Ramos','M',31, tp_endereco('50010', 932,'apto 2102'),  to_date('2021-06-02','yyyy-mm-dd'), 'VEND', 3000.00, (SELECT REF(V) FROM tb_vendedor V WHERE cpf = '31819'), '010'));
 
 --ATENDENTE ♥
-INSERT INTO tb_atendente VALUES (tp_atendente('22548','Pedro Henrique Pires','M',21,tp_endereco('26157',144,'apto 402'), to_date('2022-11-07', 'yyyy-mm-dd'), 'ATEND', 2000.00, NULL, '022'));
-INSERT INTO tb_atendente VALUES (tp_atendente('98977','Laís Rocha','F',20,tp_endereco('50010',932,'apto 1602'), to_date('2021-03-30','yyyy-mm-dd'), 'ATEND', 1800.00, (SELECT REF(F) FROM tb_atendente F WHERE cpf = '22548'), '012'));
+INSERT INTO tb_atendente VALUES (tp_atendente('22548','Pedro Henrique Pires','M',21,tp_endereco('26157',144,'apto 402'), to_date('2021-11-07', 'yyyy-mm-dd'), 'ATEND', 2000.00, NULL, '022'));
+INSERT INTO tb_atendente VALUES (tp_atendente('98977','Laís Rocha','F',20,tp_endereco('50010',932,'apto 1602'), to_date('2022-03-30','yyyy-mm-dd'), 'ATEND', 1800.00, (SELECT REF(F) FROM tb_atendente F WHERE cpf = '22548'), '012'));
 
 
 
@@ -176,79 +176,79 @@ INSERT INTO tb_consulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '48
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '32387'),
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '087'),
-                                      TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-09-04 14:30:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '39511'),
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '870'),
-                                      TO_TIMESTAMP('2022-09-01 15:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-09-04 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '68703'),
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '870'),
-                                      TO_TIMESTAMP('2022-08-01 08:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-09-04 8:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '93818'),
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '101'),
-                                      TO_TIMESTAMP('2022-08-01 14:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '32966'), 
-                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
+                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
-                                      TO_TIMESTAMP('2022-08-04 10:30','YYYY-MM-DD HH24:MI:SS')); 
+                                      TO_TIMESTAMP('2022-09-04 14:30','YYYY-MM-DD HH24:MI:SS')); 
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '32387'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '087'),
-                                      TO_TIMESTAMP('2022-09-07 14:30', 'YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-07 14:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '39511'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '870'),
-                                      TO_TIMESTAMP('2022-10-01 16:30', 'YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-05 16:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '68703'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
-                                      TO_TIMESTAMP('2022-09-04 9:30', 'YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-04 9:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '93818'), 
                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                      (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '101'),
-                                     TO_TIMESTAMP('2022-10-09 15:30','YYYY-MM-DD HH24:MI:SS'));  
+                                      TO_TIMESTAMP('2022-10-10 15:30','YYYY-MM-DD HH24:MI:SS'));  
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '32966'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
-                                      TO_TIMESTAMP('2022-09-01 10:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-03 10:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '81783'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '087'),
-                                      TO_TIMESTAMP('2022-08-05 14:00', 'YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-09-05 14:00', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '00182'), 
                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                      (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '870'),
-                                     TO_TIMESTAMP('2022-07-02 13:30', 'YYYY-MM-DD HH24:MI:SS'));
+                                     TO_TIMESTAMP('2022-09-06 15:30', 'YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '69221'), 
                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                      (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
-                                     TO_TIMESTAMP('2022-08-04 9:00','YYYY-MM-DD HH24:MI:SS'));
+                                     TO_TIMESTAMP('2022-09-05 9:00','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '40942'), 
                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                      (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '101'),
-                                     TO_TIMESTAMP('2022-07-22 15:00','YYYY-MM-DD HH24:MI:SS'));
+                                     TO_TIMESTAMP('2022-09-05 15:00','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '48509'), 
                                      (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                      (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
-                                     TO_TIMESTAMP('2022-05-29 10:30','YYYY-MM-DD HH24:MI:SS'));
+                                     TO_TIMESTAMP('2022-09-05 10:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '81783'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '087'),
-                                      TO_TIMESTAMP('2022-10-01 14:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-05 14:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '00182'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '870'),
-                                      TO_TIMESTAMP('2022-09-05 15:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-05 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '69221'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
-                                      TO_TIMESTAMP('2022-09-06 9:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-06 9:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '40942'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '012'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '101'),
-                                      TO_TIMESTAMP('2022-10-01 15:30','YYYY-MM-DD HH24:MI:SS'));
+                                      TO_TIMESTAMP('2022-10-12 15:30','YYYY-MM-DD HH24:MI:SS'));
 INSERT INTO tb_MarcarConsulta VALUES ((SELECT REF(C) FROM tb_cliente C WHERE cpf = '48509'), 
                                       (SELECT REF(A) FROM tb_atendente A WHERE Cod_Atendente = '022'),
                                       (SELECT REF(N) FROM tb_nutricionista N WHERE crn = '404'),
