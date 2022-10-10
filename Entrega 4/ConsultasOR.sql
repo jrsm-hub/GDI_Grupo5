@@ -7,9 +7,9 @@ CONSULTA À NESTED TABLE
 
 /*TABELAS
  CLIENTE FUNCIONARIO FABRICANTE LACET ♥
- CONSULTA MARCAR CONSULTA NUTRICIONISTA  LEAL 
- VENDEDOR ATENDENTE  RODRIGO
- COMPRA PRODUTO  WELISSON
+ CONSULTA MARCAR CONSULTA NUTRICIONISTA  LEAL ♥
+ VENDEDOR ATENDENTE  RODRIGO ♥
+ COMPRA PRODUTO  WELISSON ♥
 */
 -- CONSULTAS CLIENTE
 SELECT C.nome, C.calcula_imc() FROM tb_cliente C WHERE C.calcula_imc() > 25 ORDER BY C.calcula_imc();
@@ -17,8 +17,7 @@ SELECT C.cpf,  C.nome, C.percentual_gordura FROM tb_cliente C where C.biotipo = 
 SELECT C.cpf, C.nome, C.idade, C.plano_saude FROM tb_cliente C WHERE C.idade < 18;
 SELECT C.plano_saude, count(*) AS qtd_clientes FROM tb_cliente C GROUP BY C.plano_saude ORDER BY count(*);
 SELECT C.cpf, C.nome, C.endereco.complemento FROM tb_cliente C where C.endereco.cep = (SELECT C2.endereco.cep FROM tb_cliente C2 WHERE C2.nome = 'João Pedro Silveira');
--- VER PARA POVOAR CLIENTE COM MAIS DE UM TELEFONE
-SELECT C.cpf, C.nome, T.* FROM tb_cliente C, TABLE(C.telefones) T WHERE C.plano_saude = 'UNIMED';
+SELECT C.cpf, C.nome, T.* FROM tb_cliente C, TABLE(C.telefones) T WHERE C.plano_saude = 'HAPVIDA';
 
 -- CONSULTAS FUNCIONÁRIO
 
@@ -76,8 +75,8 @@ END;
 
 --CONSULTAS CONSULTA
 --retorna consultas em que houve uma prescrição
-SELECT DEREF(C.cliente_consulta).cpf AS CPF, DEREF(C.cliente_consulta).nome AS NOME, C.prod_prescritos FROM tb_consulta C
-       WHERE C.prod_prescritos IS NOT NULL;
+SELECT DEREF(C.cliente_consulta).cpf AS CPF, DEREF(C.cliente_consulta).nome AS NOME 
+       FROM tb_consulta C WHERE C.prod_prescritos IS NOT NULL;
 --quantidade de consultas de cada nutricionista
 SELECT DEREF(C.nutricionista_consulta).nome AS NOME, COUNT(DEREF(C.nutricionista_consulta).nome) AS N_CONSULTAS
        FROM tb_consulta C GROUP BY DEREF(C.nutricionista_consulta).nome;
@@ -85,7 +84,6 @@ SELECT DEREF(C.nutricionista_consulta).nome AS NOME, COUNT(DEREF(C.nutricionista
 SELECT C.data_hora_consulta, DEREF(C.cliente_consulta).nome AS Cliente,  
        DEREF(C.cliente_consulta).plano_saude AS Convênio FROM tb_consulta C WHERE 
        DEREF(C.nutricionista_consulta).crn = 087 ORDER BY C.data_hora_consulta ASC;
-
 
 --CONSULTAS MARCAR CONSULTA
 
@@ -99,17 +97,17 @@ SELECT DEREF(A.cliente_MarcarConsulta).nome AS Cliente,
         FROM tb_MarcarConsulta A WHERE DEREF(A.atendente_MarcarConsulta).Cod_Atendente = '012'; 
 
 
--- Retorna o nome do cliente e o nome do nutricionista em que a consulta foi marcada pelo atendente Pedro Henrique Pires para o mês de agosto
+-- Retorna o nome do cliente e o nome do nutricionista em que a consulta foi marcada pelo atendente Pedro Henrique Pires para o mês de setembro
 SELECT DEREF(A.cliente_MarcarConsulta).nome AS Cliente, 
        DEREF(A.nutricionista_MarcarConsulta).nome AS Nutricionista FROM tb_MarcarConsulta A 
-       WHERE TO_CHAR(A.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-08-__%' 
+       WHERE TO_CHAR(A.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') LIKE '2022-09-__%' 
        AND DEREF(A.atendente_MarcarConsulta).nome = 'Pedro Henrique Pires' 
        ORDER BY DEREF(A.cliente_MarcarConsulta).nome;
 
---Retorna o nome do cliente e a hora que foi marcada a sua consulta para o mês de agosto
+--Retorna o nome do cliente e a hora que foi marcada a sua consulta para o mês de setembro
 SELECT DEREF(M.cliente_MarcarConsulta).nome AS Cliente, data_hora_marcada 
        FROM tb_MarcarConsulta M WHERE TO_CHAR(M.data_hora_marcada,'YYYY-MM-DD HH24:MI:SS') 
-       LIKE '2022-08-__%' ORDER BY DEREF(M.cliente_MarcarConsulta).nome;
+       LIKE '2022-09-__%' ORDER BY DEREF(M.cliente_MarcarConsulta).nome;
 
 --Retorna o nome do cliente o sexo e a idade do mesmo para aqueles que se consultaram com Leonardo Moraes para o mês de setembro
 SELECT DEREF(A.cliente_consulta).nome AS Cliente, DEREF(A.cliente_consulta).sexo AS Sexo,
@@ -127,7 +125,7 @@ SELECT v.cpf, v.nome FROM tb_vendedor v WHERE v.idade < 30;
 --Mostra todos os Atendentes
 SELECT a.cpf, a.nome, a.salario FROM tb_atendente a;
 --Mostra os atendentes contratados no ano de 2021
-SELECT a.cpf, a.nome, FROM tb_atendente a WHERE TO_CHAR(a.data_admissao, 'YYYY-MM-DD') LIKE '2021-__-__%';
+SELECT a.cpf, a.nome FROM tb_atendente a WHERE TO_CHAR(a.data_admissao, 'YYYY-MM-DD') LIKE '2021-__-__%';
 --Mostra os vendedores com um salário menor que o salário medio dos funcionários
 SELECT V.cpf, V.nome, V.salario FROM tb_vendedor V WHERE V.salario < (SELECT AVG(salario) FROM tb_funcionario);
 
