@@ -1,3 +1,6 @@
+//Documento consiste nas junções dos arquivos de povoamento e consulta
+//Link do github: https://github.com/jrsm-hub/GDI_Grupo5-2022.1/tree/main/Mongo
+
 use clinica;
 
 //Vai dropar o database para que possa ser povoado novamente
