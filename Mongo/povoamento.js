@@ -233,7 +233,7 @@ db.profissional.insertMany([
     },
 
     {
-     nome: "Thiago Aquino",
+        nome: "Thiago Aquino",
         area: "Odontologia",
         salario: 15000.00,
         servicos: [ 
@@ -248,7 +248,7 @@ db.profissional.insertMany([
     //Dermatologia
     {
         nome: "Vitoria Hours",
-        area: "Dermatologista",
+        area: "Dermatologia",
         salario: 7500.00,
         servicos: [
             db.servicos.findOne({id_servico: "d0p1"})._id,  
@@ -260,7 +260,7 @@ db.profissional.insertMany([
     },
     {
         nome: "Paula Seconds",
-        area: "Dermatologista",
+        area: "Dermatologia",
         salario: 9500.00,
         servicos: [ 
             db.servicos.findOne({id_servico: "d0p2"})._id, 
@@ -274,7 +274,7 @@ db.profissional.insertMany([
     //Fisioterapia
     {
         nome: "Rafael Portugal",
-        area: "Fisioterapeuta",
+        area: "Fisioterapia",
         salario: 7000.00,
         servicos: [
             db.servicos.findOne({id_servico: "f0p1"})._id, 
@@ -285,7 +285,7 @@ db.profissional.insertMany([
     },
     {
         nome: "Priscila Freitas",
-        area: "Fisioterapeuta",
+        area: "Fisioterapia",
         salario: 8500.00,
         servicos: [ 
             db.servicos.findOne({id_servico: "f0p3"})._id,  
@@ -327,7 +327,7 @@ db.profissional.insertMany([
     //Radiologia
     {
         nome: "Drauzio Costa",
-        area: "Radiologista",
+        area: "Radiologia",
         salario: 3000.00,
         servicos: [
             db.servicos.findOne({id_servico: "r0p1"})._id, 
@@ -339,7 +339,7 @@ db.profissional.insertMany([
     },
     {
         nome: "Vitor Campelo",
-        area: "Radiologista",
+        area: "Radiologia",
         salario: 5000.00,
         servicos: [
             db.servicos.findOne({id_servico: "r0p3"})._id,  
