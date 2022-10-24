@@ -156,10 +156,10 @@ db.profissionais.find({$where: function(){
 //MAPREDUCE ✓
 //Seleciona os profissionais da área de ortopedia, agrupa pelo nome e conta as ocorrências
 db.profissionais.mapReduce(
-    function() { emit( this.nome, 1 ); },
+    function() { emit( this.area, this.salario ); },
     function(key, values) { return Array.sum(values); },
     {   
-        query: { area: "Ortopedia" },
+        query: { servicos:{$not: {$size:4} }},
         out: "mapReduce"
     }
 );
